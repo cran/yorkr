@@ -1,6 +1,8 @@
-55f513ab4d49ac76dafad4703dff1d3b *DESCRIPTION
+867e3f3844e6480b995b236b4eb2c03a *DESCRIPTION
 a04a770ab39261d167d7de387b5f8af9 *LICENSE
-27db41f4b6f614f370d127335fa6702e *NAMESPACE
+eaa1299f9913e98bf1ba3771513777f7 *NAMESPACE
+30f9da16d79016e61a4fa9e5d4578ae8 *R/batsmanCumulativeAverageRuns.R
+05468384acf48a347b8d862967b1ba2e *R/batsmanCumulativeStrikeRate.R
 1abaabb368345298c5d3a701d2444021 *R/batsmanDismissals.R
 495d1f43e1840b28e730e8851428e632 *R/batsmanFoursSixes.R
 2268358e079b376fc40178e6f4f5668a *R/batsmanMovingAverage.R
@@ -9,6 +11,8 @@ d9be2a8e447666a930e1c10cd7124c55 *R/batsmanRunsAgainstOpposition.R
 3fb7402526d2323dc7d9c03a6d17de64 *R/batsmanRunsVsStrikeRate.R
 27b48aa37207d98ae2e00bab5692d76c *R/batsmansRunsPredict.R
 18c6f29ca5642133af89481775ae8438 *R/batsmansRunsVsDeliveries.R
+c6f2e0d6047b8e1e5ecba46d82cca634 *R/bowlerCumulativeAvgEconRate.R
+f1a50dd107d041b70b373bb2c2a986d9 *R/bowlerCumulativeAvgWickets.R
 131ac05b542e2ea2fe1d3391fed42a48 *R/bowlerDeliveryWickets.R
 3fed1e9bea794dc7f936f820cdacb211 *R/bowlerMeanEconomyRate.R
 4977cbf5e32bd95689ad09cb62bf528f *R/bowlerMeanRunsConceded.R
@@ -29,7 +33,7 @@ bbd809f94db9a16bac3e65fef956e31d *R/getBowlerWicketDetails.R
 835713d557adc2f8f3e5c7f0c2abe03f *R/getTeamBowlingDetails.R
 4a3b7e65a25dfb336c687598c9629988 *R/matchWormChart.R
 30685a81de608c9cb391e52634c01005 *R/parseYamlOver.R
-34fb0a48e716fd742804fdb3147adaf6 *R/plotWinLossBetweenTeams.R
+4cc4f29c4dbe3362330b689a01af76fd *R/plotWinLossBetweenTeams.R
 29e1b578380266561ae91cb35c5570a0 *R/saveAllMatchesAllOpposition.R
 9a96525739532d64a03a1b131ec708fc *R/saveAllMatchesBetweenTeams.R
 89fc9b1f079983c16cf30fe57dc08c73 *R/specialProc.R
@@ -64,6 +68,8 @@ c348beb6cebe09146bd35a54ad7120a7 *R/teamBowlingWicketKindMatch.R
 1be260a4b92d581acce04787bd8893a1 *R/teamBowlingWicketMatch.R
 1a462b0bf7bccc65ebaf6c309b5c21e4 *R/teamBowlingWicketRunsAllOppnAllMatches.R
 b8b97d850ef86e1f34841583885cda00 *R/teamBowlingWicketRunsMatch.R
+487c1e43aa60a0c73921eccccaf67b9c *man/batsmanCumulativeAverageRuns.Rd
+76d12feba65e8df0f5cc6277603c2512 *man/batsmanCumulativeStrikeRate.Rd
 56add79cce8c2740f10d93efe3fbb3f5 *man/batsmanDismissals.Rd
 3e90fc320f08df17fd399be7b3141026 *man/batsmanFoursSixes.Rd
 e1904ca55fb22d1d2106e50e7a82bb0e *man/batsmanMovingAverage.Rd
@@ -72,6 +78,8 @@ f7283f12d43ed7a341278524294871c7 *man/batsmanRunsPredict.Rd
 24cc568cc9d122b880147ebd5288f662 *man/batsmanRunsVenue.Rd
 c6331b8f58ac0a1625bd3be3beee3b5f *man/batsmanRunsVsDeliveries.Rd
 19257e6c9c3b6960c7a6496886b09d44 *man/batsmanRunsVsStrikeRate.Rd
+24006906c92281c238cc02d3b357fc80 *man/bowlerCumulativeAvgEconRate.Rd
+7d66b222c3f3299db74261f8428851b6 *man/bowlerCumulativeAvgWickets.Rd
 ac5b717cebafb348015e285c8d9a8c61 *man/bowlerDeliveryWickets.Rd
 f83c08c457b7cab12b06c7df27954a02 *man/bowlerMeanEconomyRate.Rd
 56b2ff86a107900b13d438970b0b6ebe *man/bowlerMeanRunsConceded.Rd
@@ -92,7 +100,7 @@ f59e84eb1a5d7ce343fe64247a96126f *man/getDeliveryWickets.Rd
 537ba71945a56cb814b1d688bb5ce13c *man/getTeamBowlingDetails.Rd
 ea3e0e45be5dd3448d115c710d0be54c *man/matchWormGraph.Rd
 7edf2fd48c17bfca356bdf0f74fb023a *man/parseYamlOver.Rd
-caf30171d413d293049bb738e7024ada *man/plotWinLossBetweenTeams.Rd
+b09723c6477c4a522089c1c207bfb69d *man/plotWinLossBetweenTeams.Rd
 a0ccf07faeea2b7b53a869707e52a3cc *man/saveAllMatchesAllOpposition.Rd
 511fc077899a5db9405dd8146ba9a0d7 *man/saveAllMatchesBetweenTeams.Rd
 b70df91845330df3e4b01bfa953f2518 *man/specialProc.Rd
