@@ -1,10 +1,10 @@
 Package: yorkr
 Type: Package
-Version: 0.0.4
+Version: 0.0.5
 Title: Analyze Cricket Performances Based on Data from Cricsheet
-Description: Tools for analyzing performances of cricketers and cricket
-             teams based on 'yaml' match data from Cricsheet<http://cricsheet.org>.
-Date: 2016-04-18
+Description: Analyzing performances of cricketers and cricket teams
+             based on 'yaml' match data from Cricsheet <http://cricsheet.org>.
+Date: 2016-04-23
 Author: Tinniam V Ganesh
 Maintainer: Tinniam V Ganesh <tvganesh.85@gmail.com>
 License: MIT + file LICENSE
@@ -15,6 +15,6 @@ Imports: dplyr, ggplot2, reshape2, yaml, gridExtra, rpart.plot, stats,
         utils
 URL: https://github.com/tvganesh/yorkr
 NeedsCompilation: no
-Packaged: 2016-04-18 03:26:50 UTC; Ganesh
+Packaged: 2016-05-21 09:32:03 UTC; Ganesh
 Repository: CRAN
-Date/Publication: 2016-04-18 08:59:08
+Date/Publication: 2016-05-21 11:55:09
