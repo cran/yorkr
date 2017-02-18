@@ -1,4 +1,4 @@
-13849e172a1a394e334f13d9e4d09f51 *DESCRIPTION
+166b3bf565ccce2063921cb89194f8cf *DESCRIPTION
 a04a770ab39261d167d7de387b5f8af9 *LICENSE
 61939555c6a16c0f0e3644d51a061bd8 *NAMESPACE
 4ba03afef199a8f9cfd8bdf0e5a27ddc *R/batsmanCumulativeAverageRuns.R
@@ -42,10 +42,10 @@ fd4a0cbb1b11c71ff6a20fe445fa8d5f *R/rankIPLBowlers.R
 6a748a566b5bd331874cd1fb8dea2bac *R/rankODIBowlers.R
 9e134a71d8f10bea8d0a00ddc83da565 *R/rankT20Batsmen.R
 f74d4f7e3c037ca35f4255223b6bf3d6 *R/rankT20Bowlers.R
-29e1b578380266561ae91cb35c5570a0 *R/saveAllMatchesAllOpposition.R
+fda596a60f8e15c1a655cb35cab087ec *R/saveAllMatchesAllOpposition.R
 9f2ab1206d9a110bc3688036267f0411 *R/saveAllMatchesAllOppositionIPLT20.R
 eb1f9b199121c5cca26b2e7cb49c6395 *R/saveAllMatchesBetween2IPLTeams.R
-9a96525739532d64a03a1b131ec708fc *R/saveAllMatchesBetweenTeams.R
+95415894ae4daf8f9b15355458a5ff08 *R/saveAllMatchesBetweenTeams.R
 89fc9b1f079983c16cf30fe57dc08c73 *R/specialProc.R
 f6dc9278f3ab9c4f1b29de6ac2b29e41 *R/teamBatsmenPartnershipAllOppnAllMatches.R
 2e053870ec1892b81fad5d6ab7351231 *R/teamBatsmenPartnershipAllOppnAllMatchesPlot.R
@@ -120,10 +120,10 @@ b09723c6477c4a522089c1c207bfb69d *man/plotWinLossBetweenTeams.Rd
 3ed5afeedfe61e82edd5dff6caa3b913 *man/rankODIBowlers.Rd
 9da0d63544fa062c5a1c4de0683d0909 *man/rankT20Batsmen.Rd
 693abcade3ab9dc361fbe1b2e469cabb *man/rankT20Bowlers.Rd
-a0ccf07faeea2b7b53a869707e52a3cc *man/saveAllMatchesAllOpposition.Rd
+aa05d64d47af77fced2c1441a5b1e7fb *man/saveAllMatchesAllOpposition.Rd
 9ee60320323b3035564f138d2d1ca8b2 *man/saveAllMatchesAllOppositionIPLT20.Rd
 ba6a8e0868d844608058a7f0222a7017 *man/saveAllMatchesBetween2IPLTeams.Rd
-511fc077899a5db9405dd8146ba9a0d7 *man/saveAllMatchesBetweenTeams.Rd
+7c634b1be3ea3478121d36e43a9ca315 *man/saveAllMatchesBetweenTeams.Rd
 b70df91845330df3e4b01bfa953f2518 *man/specialProc.Rd
 3e44befc40105b68dd0727a02560aad1 *man/teamBatsmenPartnershiOppnAllMatches.Rd
 e6f2cbd2848fa53329272cececcee6a2 *man/teamBatsmenPartnershipAllOppnAllMatches.Rd
