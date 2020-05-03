@@ -4,10 +4,12 @@
 \alias{saveAllMatchesAllOpposition}
 \title{Saves matches of all opposition as dataframe}
 \usage{
-saveAllMatchesAllOpposition(dir)
+saveAllMatchesAllOpposition(dir=".",odir=".")
 }
 \arguments{
-\item{dir}{Directory to store saved matches}
+\item{dir}{Input Directory}
+
+\item{odir}{Output Directory to store saved matches}
 }
 \value{
 None
@@ -21,11 +23,8 @@ Maintainer: Tinniam V Ganesh \email{tvganesh.85@gmail.com}
 }
 \examples{
 \dontrun{
-saveAllMatchesBetweenTeams
+saveAllMatchesBetweenTeams(dir=".",odir=".")
 }
-}
-\author{
-Tinniam V Ganesh
 }
 \references{
 \url{http://cricsheet.org/}\cr
@@ -39,4 +38,6 @@ Tinniam V Ganesh
 \code{\link{getAllMatchesAllOpposition}}\cr
 \code{\link{getAllMatchesBetweenTeams}}\cr
 }
-
+\author{
+Tinniam V Ganesh
+}

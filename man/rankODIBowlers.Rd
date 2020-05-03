@@ -4,7 +4,12 @@
 \alias{rankODIBowlers}
 \title{Ranks the ODI bowlers}
 \usage{
-rankODIBowlers()
+rankODIBowlers(dir=".",odir=".")
+}
+\arguments{
+\item{dir}{The input directory}
+
+\item{odir}{The output directory}
 }
 \value{
 The ranked ODI bowlers
@@ -22,9 +27,6 @@ odiBowlersRank <- rankODIBowlers()
 }
 
 }
-\author{
-Tinniam V Ganesh
-}
 \references{
 \url{http://cricsheet.org/}\cr
 \url{https://gigadom.wordpress.com/}\cr
@@ -36,4 +38,6 @@ Tinniam V Ganesh
 \code{\link{rankODIBatsmen}}\cr
 \code{\link{rankT20Batsmen}}\cr
 }
-
+\author{
+Tinniam V Ganesh
+}

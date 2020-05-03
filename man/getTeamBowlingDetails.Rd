@@ -4,7 +4,7 @@
 \alias{getTeamBowlingDetails}
 \title{Get the team bowling details}
 \usage{
-getTeamBowlingDetails(team,dir=".",save=FALSE)
+getTeamBowlingDetails(team,dir=".",save=FALSE, odir=".")
 }
 \arguments{
 \item{team}{The team for which detailed bowling info is required}
@@ -13,6 +13,8 @@ getTeamBowlingDetails(team,dir=".",save=FALSE)
 
 \item{save}{Whether the data frame needs to be saved as RData or not. It is recommended to set save=TRUE
 as the data can be used for a lot of analyses of batsmen}
+
+\item{odir}{The output directory}
 }
 \value{
 bowlingDetails
@@ -28,12 +30,9 @@ Maintainer: Tinniam V Ganesh \email{tvganesh.85@gmail.com}
 }
 \examples{
 \dontrun{
-a <- getTeamBowlingDetails("India",dir="../data",save=TRUE)
+a <- getTeamBowlingDetails("India",dir="../data",save=TRUE,odir=".")
 }
 
-}
-\author{
-Tinniam V Ganesh
 }
 \references{
 \url{http://cricsheet.org/}\cr
@@ -46,4 +45,6 @@ Tinniam V Ganesh
 \code{\link{batsmanDismissals}}\cr
 \code{\link{getTeamBattingDetails}}\cr
 }
-
+\author{
+Tinniam V Ganesh
+}

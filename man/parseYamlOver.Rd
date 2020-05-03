@@ -4,7 +4,7 @@
 \alias{parseYamlOver}
 \title{Parse yaml file and convert to dataframe}
 \usage{
-parseYamlOver(match,s,ateam,overs,delivery,meta)
+parseYamlOver(match,s,ateam,delivery,meta)
 }
 \arguments{
 \item{match}{The dataframe of the match}
@@ -12,8 +12,6 @@ parseYamlOver(match,s,ateam,overs,delivery,meta)
 \item{s}{The string with the delivery}
 
 \item{ateam}{The team}
-
-\item{overs}{overs}
 
 \item{delivery}{The delivery of the over}
 
@@ -36,9 +34,6 @@ Maintainer: Tinniam V Ganesh \email{tvganesh.85@gmail.com}
 }
 
 }
-\author{
-Tinniam V Ganesh
-}
 \references{
 \url{http://cricsheet.org/}\cr
 \url{https://gigadom.wordpress.com/}\cr
@@ -50,4 +45,6 @@ Tinniam V Ganesh
 \code{\link{batsmanDismissals}}\cr
 \code{\link{getTeamBattingDetails}}\cr
 }
-
+\author{
+Tinniam V Ganesh
+}

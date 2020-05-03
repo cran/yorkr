@@ -4,7 +4,12 @@
 \alias{rankIPLBowlers}
 \title{Ranks the IPL bowlers}
 \usage{
-rankIPLBowlers()
+rankIPLBowlers(dir='.',odir=".")
+}
+\arguments{
+\item{dir}{The input directory}
+
+\item{odir}{The output directory}
 }
 \value{
 The ranked IPL batsmen
@@ -22,9 +27,6 @@ iplBowlersRank <- rankIPLBowlers()
 }
 
 }
-\author{
-Tinniam V Ganesh
-}
 \references{
 \url{http://cricsheet.org/}\cr
 \url{https://gigadom.wordpress.com/}\cr
@@ -37,4 +39,6 @@ Tinniam V Ganesh
 \code{\link{rankT20Batsmen}}\cr
 \code{\link{rankT20Bowlers}}\cr
 }
-
+\author{
+Tinniam V Ganesh
+}
