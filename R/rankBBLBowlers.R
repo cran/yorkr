@@ -1,18 +1,18 @@
 ##########################################################################################
 # Designed and developed by Tinniam V Ganesh
-# Date : 3 May 2020
-# Function: rankODIBowlers
-# This function creates a dataframe of all ODI bowlers performances and then
-# ranks the  bowlers
+# Date : 11 May 2020
+# Function: rankBBLLBowlers
+# This function creates a dataframe of all batsmen performances and then
+# ranks the BBL batsmen
 #
 ###########################################################################################
 #' @title
-#' Ranks the ODI bowlers
+#' Ranks the BBL bowlers
 #'
 #' @description
-#' This function creates a single datframe of all ODI bowlers and then ranks them
+#' This function creates a single datframe of all BBL bowlers and then ranks them
 #' @usage
-#' rankODIBowlers(dir=".",odir=".",minMatches=20)
+#' rankBBLBowlers(dir='.',odir=".",minMatches=20)
 #'
 #' @param dir
 #' The input directory
@@ -23,8 +23,7 @@
 #' @param minMatches
 #' Minimum matches
 #'
-#'
-#' @return The ranked ODI bowlers
+#' @return The ranked BBL bowlers
 #' @references
 #' \url{http://cricsheet.org/}\cr
 #' \url{https://gigadom.wordpress.com/}\cr
@@ -38,29 +37,25 @@
 #' @examples
 #' \dontrun{
 #' #
-#' odiBowlersRank <- rankODIBowlers()
+#' bblBowlersRank <- rankBBLBowlers()
 #' }
 #'
 #' @seealso
-#' \code{\link{rankIPLBowlers}}\cr
-#' \code{\link{rankIPLBowlers}}\cr
+#' \code{\link{rankIPLBatsmen}}\cr
+#' \code{\link{rankODIBowlers}}\cr
 #' \code{\link{rankODIBatsmen}}\cr
 #' \code{\link{rankT20Batsmen}}\cr
+#' \code{\link{rankT20Bowlers}}\cr
 #' @export
 #'
-rankODIBowlers <- function(dir='.',odir=".",minMatches=20) {
+rankBBLBowlers <- function(dir='.',odir=".",minMatches=20) {
     bowlingDetails=bowler=wickets=economyRate=matches=meanWickets=meanER=totalWickets=NULL
     currDir= getwd()
-    teams <-c("Australia","India","Pakistan","West Indies", 'Sri Lanka',
-              "England", "Bangladesh","Netherlands","Scotland", "Afghanistan",
-              "Zimbabwe","Ireland","New Zealand","South Africa","Canada",
-              "Bermuda","Kenya","Hong Kong","Nepal","Oman","Papua New Guinea",
-              "United Arab Emirates","Namibia","Cayman Islands","Singapore",
-              "United States of America","Bhutan","Maldives","Botswana","Nigeria",
-              "Denmark","Germany","Jersey","Norway","Qatar","Malaysia","Vanuatu",
-              "Thailand")
+    teams <-c("Adelaide Strikers", "Brisbane Heat", "Hobart Hurricanes",
+              "Melbourne Renegades", "Melbourne Stars", "Perth Scorchers", "Sydney Sixers",
+              "Sydney Thunder")
 
-    #teams <- c("Australia","India","Singapore","West Indies")
+
     # Get all bowling details
 
     details=df=NULL
@@ -79,7 +74,7 @@ rankODIBowlers <- function(dir='.',odir=".",minMatches=20) {
     }
     #Change dir
     setwd(odir)
-
+    bowlingDF<-NULL
 
     # Compute wickets by bowler in each team
     o <- data.frame(bowler=character(0),wickets=numeric(0),economyRate=numeric(0))
@@ -116,11 +111,10 @@ rankODIBowlers <- function(dir='.',odir=".",minMatches=20) {
         )
 
     }
-    # Reset to currDir
     setwd(currDir)
     q <- filter(o,matches >= minMatches)
-    ODIBowlersRank <- arrange(q,desc(totalWickets),desc(meanER))
-    ODIBowlersRank <- distinct(ODIBowlersRank)
-    ODIBowlersRank
+    BBLBowlersRank <- arrange(q,desc(totalWickets),desc(meanER))
+    BBLBowlersRank <- distinct(BBLBowlersRank)
+    BBLBowlersRank
 
 }

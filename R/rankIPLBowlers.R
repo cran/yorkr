@@ -3,7 +3,7 @@
 # Date : 3 May 2020
 # Function: rankIPLBowlers
 # This function creates a dataframe of all batsmen performances and then
-# ranks the IPL batsmen
+# ranks the IPL bowlers
 #
 ###########################################################################################
 #' @title
@@ -12,7 +12,7 @@
 #' @description
 #' This function creates a single datframe of all IPL bowlers and then ranks them
 #' @usage
-#' rankIPLBowlers(dir='.',odir=".")
+#' rankIPLBowlers(dir='.',odir=".",minMatches=20)
 #'
 #' @param dir
 #' The input directory
@@ -20,6 +20,8 @@
 #' @param odir
 #' The output directory
 #'
+#' @param minMatches
+#' Minimum matches
 #'
 #' @return The ranked IPL batsmen
 #' @references
@@ -46,7 +48,7 @@
 #' \code{\link{rankT20Bowlers}}\cr
 #' @export
 #'
-rankIPLBowlers <- function(dir='.',odir=".") {
+rankIPLBowlers <- function(dir='.',odir=".",minMatches=20) {
     bowlingDetails=bowler=wickets=economyRate=matches=meanWickets=meanER=totalWickets=NULL
     currDir= getwd()
     teams <-c("Chennai Super Kings","Deccan Chargers","Delhi Daredevils",
@@ -112,8 +114,9 @@ rankIPLBowlers <- function(dir='.',odir=".") {
 
     }
     setwd(currDir)
-    q <- filter(o,matches >= 20)
+    q <- filter(o,matches >= minMatches)
     IPLBowlersRank <- arrange(q,desc(totalWickets),desc(meanER))
+    IPLBowlersRank <- distinct(IPLBowlersRank)
     IPLBowlersRank
 
 }

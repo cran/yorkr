@@ -1,6 +1,6 @@
 ##########################################################################################
 # Designed and developed by Tinniam V Ganesh
-# Date : 3 May 2020
+# Date : 11 May 2020
 # Function: rankIPLBatsmen
 # This function creates a dataframe of all IPL batsmen performances and then
 # ranks the IPL batsmen
@@ -12,7 +12,7 @@
 #' @description
 #' This function creates a single datframe of all IPL batsmen and then ranks them
 #' @usage
-#' rankIPLBatsmen(dir='.',odir=".")
+#' rankIPLBatsmen(dir='.',odir=".",minMatches=50)
 #'
 #' @param dir
 #' The input directory
@@ -20,6 +20,8 @@
 #' @param odir
 #' The output directory
 #'
+#' @param minMatches
+#' Minimum matches
 #'
 #' @return The ranked IPL batsmen
 #' @references
@@ -46,7 +48,7 @@
 #' \code{\link{rankT20Bowlers}}\cr
 #' @export
 #'
-rankIPLBatsmen <- function(dir='.',odir=".") {
+rankIPLBatsmen <- function(dir='.',odir=".",minMatches=50) {
 
     currDir= getwd()
     teams <-c("Chennai Super Kings","Deccan Chargers","Delhi Daredevils",
@@ -107,7 +109,7 @@ rankIPLBatsmen <- function(dir='.',odir=".") {
     # Reset to currDir
     setwd(currDir)
     # Select only players who have played 60 matches or more
-    p <- filter(o,matches >= 50)
+    p <- filter(o,matches >= minMatches)
 
     IPLBatsmenRank <- arrange(p,desc(meanRuns),desc(meanSR))
     IPLBatsmenRank
