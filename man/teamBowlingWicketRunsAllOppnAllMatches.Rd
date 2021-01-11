@@ -43,7 +43,7 @@ m <-teamBowlingWicketRunsAllOppnAllMatches(matches,t1="India",t2="All",plot=FALS
 \references{
 \url{https://cricsheet.org/}\cr
 \url{https://gigadom.in/}\cr
-\url{https://github.com/tvganesh/yorkrData}
+\url{https://github.com/tvganesh/yorkrData/}
 }
 \seealso{
 \code{\link{teamBowlingScorecardAllOppnAllMatchesMain}}\cr

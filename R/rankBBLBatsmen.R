@@ -1,9 +1,8 @@
 ##########################################################################################
 # Designed and developed by Tinniam V Ganesh
-# Date : 11 May 2020
+# Date : 5 Jan 2021
 # Function: rankBBLBatsmen
-# This function creates a dataframe of all BBL batsmen performances and then
-# ranks the BBL batsmen
+# This function ranks the BBL batsmen
 #
 ###########################################################################################
 #' @title
@@ -25,9 +24,9 @@
 #'
 #' @return The ranked BBL batsmen
 #' @references
-#' \url{http://cricsheet.org/}\cr
-#' \url{https://gigadom.wordpress.com/}\cr
-#' \url{https://github.com/tvganesh/yorkrData}
+#' \url{https://cricsheet.org/}\cr
+#' \url{https://gigadom.in/}\cr
+#' \url{https://github.com/tvganesh/yorkrData/}
 #'
 #' @author
 #' Tinniam V Ganesh
@@ -51,30 +50,17 @@
 rankBBLBatsmen <- function(dir='.',odir=".",minMatches=50) {
 
     currDir= getwd()
+    battingDetails=batsman=runs=strikeRate=matches=meanRuns=meanSR=battingDF=val=NULL
     teams <-c("Adelaide Strikers", "Brisbane Heat", "Hobart Hurricanes",
               "Melbourne Renegades", "Melbourne Stars", "Perth Scorchers", "Sydney Sixers",
               "Sydney Thunder")
 
 
-    battingDetails=batsman=runs=strikeRate=matches=meanRuns=meanSR=battingDF=val=NULL
-    details=df=NULL
-    teams1 <- NULL
-    for(team in teams){
-        print(team)
-        tryCatch({
-            batting <- getTeamBattingDetails(team,dir=dir, save=TRUE,odir=odir)
-            teams1 <- c(teams1,team)
-        },
-        error = function(e) {
-            print("No data")
 
-        }
-        )
-    }
     #Change dir
     setwd(odir)
     battingDF<-NULL
-    for(team in teams1){
+    for(team in teams){
         battingDetails <- NULL
         val <- paste(team,"-BattingDetails.RData",sep="")
         print(val)
@@ -110,6 +96,18 @@ rankBBLBatsmen <- function(dir='.',odir=".",minMatches=50) {
     p <- filter(o,matches >= minMatches)
 
     BBLBatsmenRank <- arrange(p,desc(meanRuns),desc(meanSR))
+    BBLBatsmenRank
+
+    df <- select(battingDF,batsman,runs,strikeRate)
+
+    b=summarise(group_by(df,batsman),matches=n(), meanRuns=mean(runs),meanSR=mean(strikeRate))
+    b[is.na(b)] <- 0
+    # Reset to currDir
+    setwd(currDir)
+    # Select only players based on minMatches
+    c <- filter(b,matches >= minMatches)
+
+    BBLBatsmenRank <- arrange(c,desc(meanRuns),desc(meanSR))
     BBLBatsmenRank
 
 }
