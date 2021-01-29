@@ -2,7 +2,7 @@
 # Designed and developed by Tinniam V Ganesh
 # Date : 05 Jan 2021
 # Function: rankT20Batsmen
-# This function ranks the  batsmen
+# This function ranks the  T20  batsmen
 #
 #
 ###########################################################################################
@@ -12,16 +12,22 @@
 #' @description
 #' This function creates a single datframe of all T20 batsmen and then ranks them
 #' @usage
-#' rankT20Batsmen(dir='.',odir=".",minMatches=50)
+#' rankT20Batsmen(teamNames,odir=".",minMatches, yearSelected, runsvsSR)
 #'
-#' @param dir
-#' The input directory
+#' @param teamNames
+#' The team names
 #'
 #' @param odir
 #' The output directory
 #'
 #' @param minMatches
-#' Minimum matches
+#' Minimum matches played
+#'
+#' @param yearSelected
+#' Selected year
+#'
+#' @param runsvsSR
+#'  Runs or Strike rate
 #'
 #' @return The ranked T20 batsmen
 #' @references
@@ -36,29 +42,21 @@
 #'
 #' @examples
 #' \dontrun{
-#' #
-#' t20BatsmanRank <- rankT20Batsmen()
+#' rankT20Batsmen(teamNames,odir=".",minMatches, yearSelected, runsvsSR)
 #' }
 #'
 #' @seealso
-#' \code{\link{rankIPLBowlers}}\cr
 #' \code{\link{rankODIBowlers}}\cr
 #' \code{\link{rankODIBatsmen}}\cr
 #' \code{\link{rankT20Bowlers}}\cr
 #' @export
 #'
-rankT20Batsmen <- function(dir='.',odir=".",minMatches=50) {
+rankT20Batsmen <- function(teamNames,odir=".",minMatches, yearSelected, runsvsSR) {
 
+    cat("Entering rank Batsmen1 \n")
     currDir= getwd()
-    battingDetails=batsman=runs=strikeRate=matches=meanRuns=meanSR=battingDF=val=NULL
-    teams <-c("Australia","India","Pakistan","West Indies", 'Sri Lanka',
-              "England", "Bangladesh","Netherlands","Scotland", "Afghanistan",
-              "Zimbabwe","Ireland","New Zealand","South Africa","Canada",
-              "Bermuda","Kenya","Hong Kong","Nepal","Oman","Papua New Guinea",
-              "United Arab Emirates","Namibia","Cayman Islands","Singapore",
-              "United States of America","Bhutan","Maldives","Botswana","Nigeria",
-              "Denmark","Germany","Jersey","Norway","Qatar","Malaysia","Vanuatu",
-              "Thailand")
+    battingDetails=batsman=runs=strikeRate=matches=meanRuns=meanSR=battingDF=val=year=NULL
+    teams = unlist(teamNames)
     #Change dir
     setwd(odir)
     battingDF<-NULL
@@ -78,18 +76,33 @@ rankT20Batsmen <- function(dir='.',odir=".",minMatches=50) {
         battingDF <- rbind(battingDF,details)
 
     }
+    print(dim(battingDF))
+    maxDate= max(battingDF$date)
+    minDate= min(battingDF$date)
+    maxYear = lubridate::year(maxDate)
+    minYear = lubridate::year(minDate)
 
-    df <- select(battingDF,batsman,runs,strikeRate)
+    cat("year err=",yearSelected," minMatches=", minMatches," runsVsSR=", runsvsSR,"\n")
+    dateValue=as.Date(paste(yearSelected,"-01-01",sep=""))
+    if (dateValue < minDate)
+        dateValue=minDate
+    df=battingDF %>% filter(date > as.Date(dateValue))
 
-    b=summarise(group_by(df,batsman),matches=n(), meanRuns=mean(runs),meanSR=mean(strikeRate))
+    df1 <- select(df,batsman,runs,strikeRate)
+
+    b=summarise(group_by(df1,batsman),matches=n(), meanRuns=mean(runs),meanSR=mean(strikeRate))
+    print(dim(b))
     b[is.na(b)] <- 0
+
+    c <- filter(b,matches >= minMatches)
     # Reset to currDir
     setwd(currDir)
-    # Select only players based on minMatches
-    c <- filter(b,matches >= minMatches)
 
-    T20BatsmenRank <- arrange(c,desc(meanRuns),desc(meanSR))
+    if(runsvsSR == "Runs over Strike rate"){
+        T20BatsmenRank <- arrange(c,desc(meanRuns),desc(meanSR))
+    } else if (runsvsSR == "Strike rate over Runs"){
+        T20BatsmenRank <- arrange(c,desc(meanSR),desc(meanRuns))
+    }
     T20BatsmenRank
 
 }
-

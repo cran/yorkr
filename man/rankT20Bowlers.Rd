@@ -4,28 +4,31 @@
 \alias{rankT20Bowlers}
 \title{Ranks the T20 bowlers}
 \usage{
-rankT20Bowlers(dir='.',odir=".",minMatches=20)
+rankT20Bowlers(teamNames,odir=".",minMatches, yearSelected, wicketsVsER)
 }
 \arguments{
-\item{dir}{The input directory}
+\item{teamNames}{The team names}
 
 \item{odir}{The output directory}
 
-\item{minMatches}{Minimum matches}
+\item{minMatches}{Minimum matches played}
+
+\item{yearSelected}{Selected year}
+
+\item{wicketsVsER}{Wickets  or economy rate}
 }
 \value{
 The ranked T20 bowlers
 }
 \description{
-This function creates a single datframe of all T20 batsmen and then ranks them
+This function creates a single datframe of all T20 bowlers and then ranks them
 }
 \note{
 Maintainer: Tinniam V Ganesh \email{tvganesh.85@gmail.com}
 }
 \examples{
 \dontrun{
-#
-t20BowlersRank <- rankT20Bowlers()
+rankT20Bowlers(teamNames,odir=".",minMatches, yearSelected, wicketsVsER)
 }
 
 }
@@ -35,10 +38,10 @@ t20BowlersRank <- rankT20Bowlers()
 \url{https://github.com/tvganesh/yorkrData/}
 }
 \seealso{
-\code{\link{rankIPLBowlers}}\cr
 \code{\link{rankODIBowlers}}\cr
 \code{\link{rankODIBatsmen}}\cr
 \code{\link{rankT20Batsmen}}\cr
+\code{\link{rankT20Bowlers}}\cr
 }
 \author{
 Tinniam V Ganesh

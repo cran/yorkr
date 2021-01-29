@@ -1,29 +1,28 @@
 ##########################################################################################
 # Designed and developed by Tinniam V Ganesh
-# Date : 05 Jan 2021
-# Function: rankWBBBowlers
-# This function ranks the WBB bowlers
-#
+# Date : 28 Jan 2021
+# Function: helper2
+# his function is a helper for computing batting details of team
 #
 ###########################################################################################
 #' @title
-#' Ranks the WBB bowlers
+#' Gets min,max date and min and max matches from dataframe
+#'
 #'
 #' @description
-#' This function creates a single datframe of all WBB bowlers and then ranks them
-#' @usage
-#' rankWBBBowlers(dir='.',odir=".",minMatches=20)
+#' This function gets min,max date and min and max matches from dataframe
 #'
-#' @param dir
-#' The input directory
+#' @usage
+#' helper2(teamNames,odir=".")
+#'
+#' @param teamNames
+#' The team names
 #'
 #' @param odir
 #' The output directory
 #'
-#' @param minMatches
-#' Minimum matches
 #'
-#' @return The ranked WBB batsmen
+#' @return minDate,maxDate, bowingDF
 #' @references
 #' \url{https://cricsheet.org/}\cr
 #' \url{https://gigadom.in/}\cr
@@ -34,29 +33,24 @@
 #' @note
 #' Maintainer: Tinniam V Ganesh \email{tvganesh.85@gmail.com}
 #'
-#' @examples
-#' \dontrun{
-#' #
-#' WBBBowlersRank <- rankWBBBowlers()
-#' }
 #'
 #' @seealso
-#' \code{\link{rankIPLBatsmen}}\cr
 #' \code{\link{rankODIBowlers}}\cr
 #' \code{\link{rankODIBatsmen}}\cr
 #' \code{\link{rankT20Batsmen}}\cr
 #' \code{\link{rankT20Bowlers}}\cr
 #' @export
 #'
-rankWBBBowlers <- function(dir='.',odir=".",minMatches=20) {
-    bowlingDetails=bowler=wickets=economyRate=matches=meanWickets=meanER=totalWickets=NULL
-    wicketPlayerOut=opposition=venue=NULL
+helper2<- function(teamNames, odir=".") {
+
     currDir= getwd()
-    teams <-c("Adelaide Strikers", "Brisbane Heat", "Hobart Hurricanes",
-              "Melbourne Renegades", "Melbourne Stars", "Perth Scorchers", "Sydney Sixers",
-              "Sydney Thunder")
+
+    year=bowler=NULL
+    cat("Dir helper2=====",getwd()," odir=", odir, "\n")
+    teams = unlist(teamNames)
     #Change dir
     setwd(odir)
+    cat("Dir helper2=====",getwd(),"\n")
     bowlingDF<-NULL
 
     # Compute wickets by bowler in each team
@@ -76,23 +70,20 @@ rankWBBBowlers <- function(dir='.',odir=".",minMatches=20) {
         details <- bowlingDetails
         bowlingDF <- rbind(bowlingDF,details)
     }
+    maxDate= max(bowlingDF$date)
+    minDate= min(bowlingDF$date)
+    maxYear = lubridate::year(maxDate)
+    minYear = lubridate::year(minDate)
+
     # Compute number of matches played
     a=bowlingDF %>% select(bowler,date) %>% unique()
     b=summarise(group_by(a,bowler),matches=n())
 
-    # Compute wickets
-    c <- filter(bowlingDF,wicketPlayerOut != "nobody")
-    d <- select(c,bowler,wicketPlayerOut,economyRate,date,opposition,venue)
-    e <- summarise(group_by(d,bowler,date,economyRate),wickets=length(unique(wicketPlayerOut)))
-    f=summarise(group_by(e,bowler), totalWickets=sum(wickets),meanER=mean(economyRate))
-
-    # Join
-    g=merge(b,f,by="bowler",all.x = TRUE)
-    g[is.na(g)] <- 0
-    h <- filter(g,matches >= minMatches)
+    minMatches = min(b$matches)
+    maxMatches = max(b$matches)
     setwd(currDir)
-    WBBBowlersRank <- arrange(h,desc(totalWickets),desc(meanER))
-    WBBBowlersRank <- distinct(WBBBowlersRank)
-    WBBBowlersRank
+
+    #a=battingDF %>% filter(date > as.Date("2018-02-01"))
+    return(list(minYear,maxYear,minMatches, maxMatches))
 
 }

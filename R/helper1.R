@@ -1,29 +1,29 @@
 ##########################################################################################
 # Designed and developed by Tinniam V Ganesh
-# Date : 05 Jan 2021
-# Function: rankWBBBatsmen
-# This function ranks the WBB batsmen
-#
+# Date : 27 Jan 2021
+# Function: helper1
+# This function is a helper for computing batting details of team given the year
 #
 ###########################################################################################
 #' @title
-#' Ranks the WBB batsmen
+#' Gets min,max date and min and max matches from dataframe from the year
 #'
 #' @description
-#' This function creates a single datframe of all WBB batsmen and then ranks them
+#' This function gets min,max date and min and max matches from dataframe
 #' @usage
-#' rankWBBBatsmen(dir='.',odir=".",minMatches=50)
+#' helper1(teamNames,yearValue,odir=".")
 #'
-#' @param dir
-#' The input directory
+#' @param teamNames
+#' The team names
+#'
+#'@param yearValue
+#' The year
 #'
 #' @param odir
 #' The output directory
 #'
-#' @param minMatches
-#' Minimum matches
 #'
-#' @return The ranked WBB batsmen
+#' @return minDate,maxDate,minMatches, maxMatches
 #' @references
 #' \url{https://cricsheet.org/}\cr
 #' \url{https://gigadom.in/}\cr
@@ -34,27 +34,20 @@
 #' @note
 #' Maintainer: Tinniam V Ganesh \email{tvganesh.85@gmail.com}
 #'
-#' @examples
-#' \dontrun{
-#' #
-#' WBBBatsmanRank <- rankWBBBatsmen()
-#' }
-#'
 #' @seealso
-#' \code{\link{rankIPLBowlers}}\cr
 #' \code{\link{rankODIBowlers}}\cr
 #' \code{\link{rankODIBatsmen}}\cr
 #' \code{\link{rankT20Batsmen}}\cr
 #' \code{\link{rankT20Bowlers}}\cr
 #' @export
 #'
-rankWBBBatsmen <- function(dir='.',odir=".",minMatches=50) {
+helper1<- function(teamNames,yearValue, odir=".") {
 
     currDir= getwd()
+    cat("helper yearValue =", yearValue)
     battingDetails=batsman=runs=strikeRate=matches=meanRuns=meanSR=battingDF=val=NULL
-    teams <-c("Adelaide Strikers", "Brisbane Heat", "Hobart Hurricanes",
-              "Melbourne Renegades", "Melbourne Stars", "Perth Scorchers", "Sydney Sixers",
-              "Sydney Thunder")
+    year=NULL
+    teams = unlist(teamNames)
     #Change dir
     setwd(odir)
     battingDF<-NULL
@@ -74,18 +67,24 @@ rankWBBBatsmen <- function(dir='.',odir=".",minMatches=50) {
         battingDF <- rbind(battingDF,details)
 
     }
+    maxDate= max(battingDF$date)
+    minDate= min(battingDF$date)
+    maxYear = lubridate::year(maxDate)
+    minYear = lubridate::year(minDate)
 
-    df <- select(battingDF,batsman,runs,strikeRate)
+    dateValue=as.Date(paste(yearValue,"-01-01",sep=""))
+    if (dateValue < minDate)
+        dateValue=minDate
+    a=battingDF %>% filter(date > as.Date(dateValue))
 
-    b=summarise(group_by(df,batsman),matches=n(), meanRuns=mean(runs),meanSR=mean(strikeRate))
-    b[is.na(b)] <- 0
-    # Reset to currDir
+    df <- select(a,batsman,runs,strikeRate)
+    # Compute matches
+    b=summarise(group_by(df,batsman),matches=n())
+    minMatches = min(b$matches)
+    maxMatches = max(b$matches)
     setwd(currDir)
-    # Select only players based on minMatches
-    c <- filter(b,matches >= minMatches)
 
-
-    WBBBatsmenRank <- arrange(c,desc(meanRuns),desc(meanSR))
-    WBBBatsmenRank
+    #a=battingDF %>% filter(date > as.Date("2018-02-01"))
+    return(list(minYear,maxYear,minMatches, maxMatches))
 
 }
