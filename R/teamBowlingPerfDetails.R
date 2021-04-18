@@ -57,6 +57,7 @@ teamBowlingPerfDetails <- function(match,theTeam,includeInfo=FALSE){
     # Initialise to NULL
     l <- NULL
     a <-filter(match,team!=theTeam)
+
     sz <- dim(a)
     if(sz[1] == 0){
         #cat("No bowling records.\n")

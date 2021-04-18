@@ -56,6 +56,7 @@ teamBattingPerfDetails <- function(match,theTeam,includeInfo=FALSE){
     # Initialise to NULL
     details <- NULL
     a <-filter(match,team==theTeam)
+
     sz <- dim(a)
     if(sz[1] == 0){
         #cat("No batting records.\n")

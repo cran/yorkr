@@ -1,4 +1,4 @@
-f34e497f4ae53cabd10abf40cd6e380b *DESCRIPTION
+fb428e2bdf7c2ff650fb6d5f0767748f *DESCRIPTION
 6914dc28ebaad40ba87775fd412ed594 *LICENSE
 c9b6b5e6fef97d39beb7e5fd226004de *NAMESPACE
 3e619d19a8708a273dd61dc8ec15a7f9 *R/batsmanCumulativeAverageRuns.R
@@ -22,9 +22,9 @@ a69b4d6dabd31112e58829d8d4286290 *R/bowlerMeanRunsConceded.R
 65b45dc87a890c28d40287926da498bc *R/bowlerWicketsVenue.R
 ae86b6f1589980eec0bf385c6ee36815 *R/bowlerWktsPredict.R
 eea2b64fe476e01fe316ce6f91e500b6 *R/convertAllYaml2RDataframes.R
-38aebce07defd0eaa55626a9168945a1 *R/convertAllYaml2RDataframesT20.R
+abc45125a82ac2a473f9dbd16c49897d *R/convertAllYaml2RDataframesT20.R
 23234f781fcf293739b3692fbcb87906 *R/convertYaml2RDataframe.R
-15c75bec94ae29c2eb489da92b140a3f *R/convertYaml2RDataframeT20.R
+65ceb648686659338736c2dd2ba26d36 *R/convertYaml2RDataframeT20.R
 4b47edf9709e6dfccf1a79b8e6840d8f *R/getAllMatchesAllOpposition.R
 0477c8ad272b0fec84db2ca59340b1a6 *R/getAllMatchesBetweenTeams.R
 938f9e46763f417b96913a1c9d721058 *R/getBBLBattingDetails.R
@@ -34,8 +34,8 @@ eea2b64fe476e01fe316ce6f91e500b6 *R/convertAllYaml2RDataframes.R
 c0bfc1ebca2fc8dadd05d2f76103a3da *R/getCPLBattingDetails.R
 f9765f1b72a1943cbc14f7efe3274bb6 *R/getCPLBowlingDetails.R
 a7f6d3337b572f0f96c47ccf12e5656e *R/getDeliveryWickets.R
-a279c97d2b9269828ab6353e7ab19ef8 *R/getIPLBattingDetails.R
-efb82982ccaf9c133cfb9e9c0d739ae3 *R/getIPLBowlingDetails.R
+14423853c4c3eddf0496fbdfc7c41ae1 *R/getIPLBattingDetails.R
+1d5fa2a3c56a476a59589ee88b15ae5a *R/getIPLBowlingDetails.R
 a6efa02022fc8eb4c2875a9fc4f62631 *R/getMatchDetails.R
 1a41a81e95fd36796ca0e77b1e94f519 *R/getNTBBattingDetails.R
 6dfeb95d65febd16a90d664ab400796e *R/getNTBBowlingDetails.R
@@ -63,13 +63,13 @@ c0b6f0f2ea447eb8f378af2a0d0ac944 *R/rankODIBowlers.R
 4f92518f9bb074c4319fa9870d0b84a3 *R/saveAllMatchesAllOpposition.R
 7ba2653a083333c1fd86ae0f916ca0ae *R/saveAllMatchesAllOppositionBBLT20.R
 ac71da7ca2f1e08524d81b2a1d5b9080 *R/saveAllMatchesAllOppositionCPLT20.R
-bfea43d47f6b65bba8b2d11523d4dd58 *R/saveAllMatchesAllOppositionIPLT20.R
+1df4f66c0d0525d96a51e3b381050776 *R/saveAllMatchesAllOppositionIPLT20.R
 674a89ad57cf22dc25130f3631deb8da *R/saveAllMatchesAllOppositionNTBT20.R
 5e1e332434aee352eb2b904fea65bb74 *R/saveAllMatchesAllOppositionPSLT20.R
 a4577221cb36c852dada5e92cfba29b2 *R/saveAllMatchesAllOppositionWBBT20.R
 981c19c275cb34b2da263a709100c2d1 *R/saveAllMatchesBetween2BBLTeams.R
 54a8af3cf9411ab9c250c95a64b02701 *R/saveAllMatchesBetween2CPLTeams.R
-85438f4c0f00b64fa59849c972296c0f *R/saveAllMatchesBetween2IPLTeams.R
+19932a42e1373bb1b9a1df371ce25cd0 *R/saveAllMatchesBetween2IPLTeams.R
 bc5b35cccf1837df44b441c9721cfe0e *R/saveAllMatchesBetween2NTBTeams.R
 dc9e62c8b3c8cbdadbc1d06de4b25aa5 *R/saveAllMatchesBetween2PSLTeams.R
 209199f3024a6e76f081124180e9ee59 *R/saveAllMatchesBetween2WBBTeams.R
@@ -84,7 +84,7 @@ dd130bb4ed5bb8b0a559703054311a62 *R/teamBatsmenVsBowlersAllOppnAllMatchesRept.R
 85dce634f090f5c7dbaab7d3df6210a7 *R/teamBatsmenVsBowlersMatch.R
 0f8d738f3a5ffd8aa942447b25a2adfc *R/teamBatsmenVsBowlersOppnAllMatches.R
 ef32de85291ec8fde9a267377c4a8029 *R/teamBatsmenvsBowlersAllOppnAllMatchesPlot.R
-f78a501ae0f7af67f1e5a67c0b18b755 *R/teamBattingPerfDetails.R
+5acd643cab04837503e141b638ab9330 *R/teamBattingPerfDetails.R
 d2bb876f80cea08803e54ff508e11637 *R/teamBattingScorecardAllOppnAllMatches.R
 1e515130afe486fa12ffca65a98efffb *R/teamBattingScorecardMatch.R
 b5112e46e393204b71ce7e2b719da2bd *R/teamBattingScoredcardOppnAllMatches.R
@@ -96,7 +96,7 @@ edb9adf5b5ea17904f7cc635c860b4aa *R/teamBowlersVsBatsmenOppnAllMatches.R
 c7d6435e0c9332b3f1fb55282123b8be *R/teamBowlersWicketKindOppnAllMatches.R
 aff81d37aa6c33b4ac86dacbe0503a64 *R/teamBowlersWicketRunsOppnAllMatches.R
 b56e7d8ac41a3dcfda7e9a257117c28f *R/teamBowlersWicketsOppnAllMatches.R
-ec0ccb8959b821fa484813c1b42de919 *R/teamBowlingPerfDetails.R
+8e29073d674845fe1af0363c272cddb5 *R/teamBowlingPerfDetails.R
 9d19f279070f12b4daaa932deccbde90 *R/teamBowlingPerfOppnAllMatches.R
 e15d0c69b28de2ee9ece6a5a97021290 *R/teamBowlingScorecardAllOppnAllMatches.R
 bcc319859f3f443a3f0ae0e1a9fae465 *R/teamBowlingScorecardAllOppnAllMatchesMain.R
