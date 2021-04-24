@@ -1,12 +1,12 @@
-fb428e2bdf7c2ff650fb6d5f0767748f *DESCRIPTION
+9b7ef04f02bcc803185251e4af9ace6d *DESCRIPTION
 6914dc28ebaad40ba87775fd412ed594 *LICENSE
-c9b6b5e6fef97d39beb7e5fd226004de *NAMESPACE
+9af0b01f03d022087d0901f851b9a24a *NAMESPACE
 3e619d19a8708a273dd61dc8ec15a7f9 *R/batsmanCumulativeAverageRuns.R
 6df6dcccd2a97eab55af692a173c3ebe *R/batsmanCumulativeStrikeRate.R
 879cebc428bef00f01358cb72c45ece0 *R/batsmanDismissals.R
 c26ea3809f766b4e920b10259b5c9f1b *R/batsmanFoursSixes.R
 efbd615dcf2d47b6bfc1b063f4526a43 *R/batsmanMovingAverage.R
-e34d87be9f0a6b9bf1502b6942fb89fd *R/batsmanRunsAgainstOpposition.R
+b282832790516bc1a7ca8f5a6a154a08 *R/batsmanRunsAgainstOpposition.R
 ab320d83b913abc91b847aae47233add *R/batsmanRunsVenue.R
 583b49076e5f839e2201196445139620 *R/batsmanRunsVsStrikeRate.R
 770fb85bcf6ed146cc61837fec87b29c *R/batsmansRunsPredict.R
@@ -55,7 +55,8 @@ e314f7be4996f3f201a959d62d35b476 *R/getODIBattingDetails.R
 dc21b3a0ff85c0258339250258fecf85 *R/helper3.R
 e242da8e4893eba975c459e526696dee *R/matchWormChart.R
 ce86119cc0339d0ac7587160566a7e71 *R/parseYamlOver.R
-6fb3185f58fbd08ec9d862d83b694dc3 *R/plotWinLossBetweenTeams.R
+2b6871eae398bb3e3823c1926524293d *R/plotWinLossBetweenTeams.R
+162b39b8fc87364b9fc5d6a58a01af8a *R/plotWinLossTeamVsAllTeams.R
 41847ad36e33afa918ddcadf7f4c146a *R/rankODIBatsmen.R
 c0b6f0f2ea447eb8f378af2a0d0ac944 *R/rankODIBowlers.R
 5cce4c14e5684695c3877b8c61e706f2 *R/rankT20Batsmen.R
@@ -162,6 +163,7 @@ c372869575e384a0728bd5e2e3c4178f *man/helper3.Rd
 40d70be14fd9f189da66a49f41641090 *man/matchWormGraph.Rd
 8ff80431e4aeeeb12ac9d28a965b73ec *man/parseYamlOver.Rd
 0ca77c22f5c08ff17c0547ea4f37c448 *man/plotWinLossBetweenTeams.Rd
+790b7ea9e004480dd534b4e0c0409964 *man/plotWinLossTeamVsAllTeams.Rd
 744a3e90671ca8450b226082c37a5a97 *man/rankODIBatsmen.Rd
 3d78fe90f3e967f00d10a466f5920e24 *man/rankODIBowlers.Rd
 277e70a6f270ef01a163225197d9eb85 *man/rankT20Batsmen.Rd
