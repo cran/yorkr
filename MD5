@@ -1,4 +1,4 @@
-9b7ef04f02bcc803185251e4af9ace6d *DESCRIPTION
+dda547e41e2abe123f542dadea2ffef2 *DESCRIPTION
 6914dc28ebaad40ba87775fd412ed594 *LICENSE
 9af0b01f03d022087d0901f851b9a24a *NAMESPACE
 3e619d19a8708a273dd61dc8ec15a7f9 *R/batsmanCumulativeAverageRuns.R
@@ -59,7 +59,7 @@ ce86119cc0339d0ac7587160566a7e71 *R/parseYamlOver.R
 162b39b8fc87364b9fc5d6a58a01af8a *R/plotWinLossTeamVsAllTeams.R
 41847ad36e33afa918ddcadf7f4c146a *R/rankODIBatsmen.R
 c0b6f0f2ea447eb8f378af2a0d0ac944 *R/rankODIBowlers.R
-5cce4c14e5684695c3877b8c61e706f2 *R/rankT20Batsmen.R
+68f79a58247c5cab0f9edc22e6cb146d *R/rankT20Batsmen.R
 449a62b7d160bf8ed85fc41b5ea3d406 *R/rankT20Bowlers.R
 4f92518f9bb074c4319fa9870d0b84a3 *R/saveAllMatchesAllOpposition.R
 7ba2653a083333c1fd86ae0f916ca0ae *R/saveAllMatchesAllOppositionBBLT20.R
