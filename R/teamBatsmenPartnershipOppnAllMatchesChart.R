@@ -14,7 +14,7 @@
 #' This function also returns a  dataframe  with the batting partnerships
 #'
 #' @usage
-#' teamBatsmenPartnershipOppnAllMatchesChart(matches,main,opposition, plot=TRUE)
+#' teamBatsmenPartnershipOppnAllMatchesChart(matches,main,opposition, plot=1)
 #'
 #' @param matches
 #' All the matches of the team against all oppositions
@@ -26,7 +26,7 @@
 #' The opposition team for which the the batting partnerships are sought
 #'
 #' @param plot
-#' Whether the partnerships have top be rendered as a plot. If plot=FALSE the data frame is returned
+#'  Plot=1 (static),plot=2(interactive),plot=3(table)
 #'
 #' @return None or partnerships
 #'
@@ -59,8 +59,9 @@
 #'
 #' @export
 #'
-teamBatsmenPartnershipOppnAllMatchesChart <- function(matches,main,opposition,plot=TRUE){
+teamBatsmenPartnershipOppnAllMatchesChart <- function(matches,main,opposition,plot=1){
     team=batsman=nonStriker=runs=partnershipRuns=totalRuns=NULL
+    ggplotly=NULL
     a <-filter(matches,team==main)
     #Get partnerships
     df <- data.frame(summarise(group_by(a,batsman,nonStriker),sum(runs)))
@@ -68,15 +69,27 @@ teamBatsmenPartnershipOppnAllMatchesChart <- function(matches,main,opposition,pl
 
     df <- arrange(df,desc(runs))
 
+    print("here")
+    cat("plot=")
     plot.title = paste(main," Batting partnership ","(against ",opposition," all matches)",sep="")
-    if(plot==TRUE){
+
     # Plot the data
-    ggplot(data=df,aes(x=batsman,y=runs,fill=nonStriker))+
-        geom_bar(data=df,stat="identity") +
-        xlab("Batsman") + ylab("Partnership runs") +
-        ggtitle(bquote(atop(.(plot.title),
-                                atop(italic("Data source:http://cricsheet.org/"),"")))) +
-        theme(axis.text.x = element_text(angle = 90, hjust = 1))
+    if(plot == 1){ #ggplot2
+        ggplot(data=df,aes(x=batsman,y=runs,fill=nonStriker))+
+            geom_bar(data=df,stat="identity") +
+            xlab("Batsman") + ylab("Partnership runs") +
+            ggtitle(bquote(atop(.(plot.title),
+                                    atop(italic("Data source:http://cricsheet.org/"),"")))) +
+            theme(axis.text.x = element_text(angle = 90, hjust = 1))
+    } else if(plot == 2){ #ggplotly
+        g <- ggplot(data=df,aes(x=batsman,y=runs,fill=nonStriker))+
+            geom_bar(data=df,stat="identity") +
+            xlab("Batsman") + ylab("Partnership runs") +
+            ggtitle(plot.title) +
+            theme(axis.text.x = element_text(angle = 90, hjust = 1))
+        ggplotly(g)
+
+
     } else{
         df
     }

@@ -14,7 +14,7 @@
 #' This function computes the performance of batsmen against the  bowlers of an oppositions in all matches
 #'
 #' @usage
-#' teamBatsmenVsBowlersOppnAllMatches(matches,main,opposition,plot=TRUE,top=5)
+#' teamBatsmenVsBowlersOppnAllMatches(matches,main,opposition,plot=1,top=5)
 #'
 #' @param matches
 #' All the matches of the team against one specific opposition
@@ -26,7 +26,7 @@
 #' The opposition team
 #'
 #' @param plot
-#' If plot=TRUE then a plot will be displayed else a data frame will be returned
+#' lot=1 (static),plot=2(interactive),plot=3(table)
 #'
 #' @param top
 #' The number of players to be plotted or returned as a dataframe. The default is 5
@@ -67,8 +67,9 @@
 #'
 #' @export
 #'
-teamBatsmenVsBowlersOppnAllMatches <- function(matches,main,opposition,plot=TRUE,top=5){
+teamBatsmenVsBowlersOppnAllMatches <- function(matches,main,opposition,plot=1,top=5){
     team=batsman=bowler=runs=runsScored=NULL
+    ggplotly=NULL
     a <-filter(matches,team==main)
     b <-summarise(group_by(a,batsman,bowler),sum(runs))
     names(b) <- c("batsman","bowler","runs")
@@ -85,7 +86,7 @@ teamBatsmenVsBowlersOppnAllMatches <- function(matches,main,opposition,plot=TRUE
         e <- rbind(e,f)
 
     }
-    if(plot == TRUE){
+    if(plot == 1){ #ggplot2
         plot.title = paste(main," Batsmen vs bowlers"," (against ",opposition," all matches)",sep="")
         ggplot(data=e,aes(x=bowler,y=runs,fill=factor(bowler))) +
             facet_grid(~ batsman) + geom_bar(stat="identity") +
@@ -93,6 +94,14 @@ teamBatsmenVsBowlersOppnAllMatches <- function(matches,main,opposition,plot=TRUE
             ggtitle(bquote(atop(.(plot.title),
                                 atop(italic("Data source:http://cricsheet.org/"),"")))) +
             theme(axis.text.x = element_text(angle = 90, hjust = 1))
+    } else if(plot == 2){ #ggplotly
+        plot.title = paste(main," Batsmen vs bowlers"," (against ",opposition," all matches)",sep="")
+        g <- ggplot(data=e,aes(x=bowler,y=runs,fill=factor(bowler))) +
+            facet_grid(~ batsman) + geom_bar(stat="identity") +
+            xlab("Bowler") + ylab("Runs Scored") +
+            ggtitle(plot.title) +
+            theme(axis.text.x = element_text(angle = 90, hjust = 1))
+        ggplotly(g,height=500)
     }
     else{
         e

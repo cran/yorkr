@@ -14,7 +14,7 @@
 #' with no result
 #'
 #' @usage
-#' plotWinLossBetweenTeams(team1,team2,dir=".")
+#' plotWinLossBetweenTeams(team1,team2,dir=".",plot=1)
 #'
 #' @param team1
 #' The 1st team
@@ -24,6 +24,9 @@
 #'
 #' @param dir
 #' The source directory of teh RData files
+#'
+#' @param plot
+#' plot=1 (static),plot=2(interactive)
 #'
 #' @return None
 #'
@@ -52,8 +55,9 @@
 #' @export
 #'
 
-plotWinLossBetweenTeams <- function(team1,team2,dir="."){
+plotWinLossBetweenTeams <- function(team1,team2,dir=".",plot=1){
     matches=NULL
+    ggplotly=NULL
     venue=winner=result=date=NULL
     # Create 2 filenames with both combinations of team1 and team2
     d1 <-paste(team1,"-",team2,"-allMatches.RData",sep="")
@@ -71,10 +75,19 @@ plotWinLossBetweenTeams <- function(team1,team2,dir="."){
     }
 
     plot.title <- paste("Number of wins in",team1," vs ",team2, " matches")
-    ggplot(winLoss, aes(x=winner, y=count, fill=winner))+
-        geom_bar(stat = "identity",position="dodge") +
-        xlab("Winner") + ylab("Numer of Wins") +
-        ggtitle(bquote(atop(.(plot.title),
-                            atop(italic("Data source:http://cricsheet.org/"),""))))
+    if(plot == 1){ #ggplot2
+        ggplot(winLoss, aes(x=winner, y=count, fill=winner))+
+            geom_bar(stat = "identity",position="dodge") +
+            xlab("Winner") + ylab("Numer of Wins") +
+            ggtitle(bquote(atop(.(plot.title),
+                                atop(italic("Data source:http://cricsheet.org/"),""))))
+    } else if(plot == 2 || plot == 3){
+        g <- ggplot(winLoss, aes(x=winner, y=count, fill=winner))+
+            geom_bar(stat = "identity",position="dodge") +
+            xlab("Winner") + ylab("Numer of Wins") +
+            ggtitle(plot.title)
+        ggplotly(g)
+    }
+
 
 }

@@ -14,7 +14,7 @@
 #' the data frame
 #'
 #' @usage
-#' teamBatsmenVsBowlersMatch(match,theTeam,opposition, plot=TRUE)
+#' teamBatsmenVsBowlersMatch(match,theTeam,opposition, plot=1)
 #'
 #' @param match
 #' The match between the teams
@@ -26,7 +26,7 @@
 #' The opposition team
 #'
 #' @param plot
-#' If plot=TRUE then a plot is created otherwise a data frame is returned
+#' lot=1 (static),plot=2(interactive),plot=3(table)
 #'
 #' @return b
 #' The data frame of the batsmen vs bowlers performance
@@ -56,15 +56,16 @@
 #'
 #' @export
 #'
-teamBatsmenVsBowlersMatch <- function(match,theTeam,opposition, plot=TRUE)
+teamBatsmenVsBowlersMatch <- function(match,theTeam,opposition, plot=1)
 {
     team=batsman=bowler=runs=runsConceded=NULL
+    ggplotly=NULL
     a <-filter(match,team==theTeam)
     # Summarise the performance of the batsmen against the bowlers vs total runs scored
     b <-summarise(group_by(a,batsman,bowler),sum(runs))
     names(b) <- c("batsman","bowler","runsConceded")
 
-    if(plot == TRUE){
+    if(plot == 1){ #ggplot2
         plot.title <- paste(theTeam,"Batsmen vs Bowlers in Match (vs.",opposition,")")
         # Plot the performance of the batsmen as a facted grid
         ggplot(data=b,aes(x=bowler,y=runsConceded,fill=factor(bowler))) +
@@ -74,6 +75,16 @@ teamBatsmenVsBowlersMatch <- function(match,theTeam,opposition, plot=TRUE)
             ggtitle(bquote(atop(.(plot.title),
                                     atop(italic("Data source:http://cricsheet.org/"),"")))) +
             theme(axis.text.x = element_text(angle = 90, hjust = 1))
+    } else if(plot == 2){ #ggplotly
+        plot.title <- paste(theTeam,"Batsmen vs Bowlers in Match (vs.",opposition,")")
+        # Plot the performance of the batsmen as a facted grid
+        g <- ggplot(data=b,aes(x=bowler,y=runsConceded,fill=factor(bowler))) +
+            facet_grid(~ batsman) + geom_bar(stat="identity") +
+            xlab("Opposition bowlers") + ylab("Runs scored") +
+            ggtitle('Batsmen vs Bowlers in Match') +
+            ggtitle(plot.title) +
+            theme(axis.text.x = element_text(angle = 90, hjust = 1))
+        ggplotly(g)
     }
     else{
         b

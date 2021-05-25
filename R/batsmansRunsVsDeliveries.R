@@ -13,13 +13,16 @@
 #' smoothing function is used to fit the points
 #'
 #' @usage
-#' batsmanRunsVsDeliveries(df, name= "A Late Cut")
+#' batsmanRunsVsDeliveries(df, name= "A Late Cut",staticIntv=1)
 #'
 #' @param df
 #' Data frame
 #'
 #' @param name
 #' Name of batsman
+#'
+#' @param staticIntv
+#' Static or interactive -staticIntv =1 (static plot) &  staticIntv =2 (interactive  plot)
 #'
 #' @return None
 #' @references
@@ -46,14 +49,23 @@
 #' @export
 #'
 
-batsmanRunsVsDeliveries <- function(df,name= "A Late Cut"){
+batsmanRunsVsDeliveries <- function(df,name= "A Late Cut",staticIntv=1){
     batsman = runs  = ballsPlayed= NULL
+    ggplotly=NULL
 
     plot.title = paste(name,"- Runs vs balls faced")
-    ggplot(df,aes(x=ballsPlayed,y=runs)) +
-        geom_point(size=2) + geom_smooth() +
-        xlab("Deliveries faced") + ylab("Runs") +
-        ggtitle(bquote(atop(.(plot.title),
-                            atop(italic("Data source:http://cricsheet.org/"),""))))
+    if(staticIntv ==1){ #ggplot2
+        ggplot(df,aes(x=ballsPlayed,y=runs)) +
+            geom_point(size=2) + geom_smooth() +
+            xlab("Deliveries faced") + ylab("Runs") +
+            ggtitle(bquote(atop(.(plot.title),
+                                atop(italic("Data source:http://cricsheet.org/"),""))))
+    } else { #ggplotly
+        g <-ggplot(df,aes(x=ballsPlayed,y=runs)) +
+            geom_point(size=2) + geom_smooth() +
+            xlab("Deliveries faced") + ylab("Runs") +
+            ggtitle(plot.title)
+        ggplotly(g)
+    }
 
 }

@@ -12,13 +12,16 @@
 #' This function computes and plots the mean runs scored by the batsman at different
 #' venues of the world
 #' @usage
-#' batsmanRunsVenue(df, name= "A Leg Glance")
+#' batsmanRunsVenue(df, name= "A Leg Glance",staticIntv=1)
 #'
 #' @param df
 #' Data frame
 #'
 #' @param name
 #' Name of batsman
+#'
+#' @param staticIntv
+#' Static or interactive -staticIntv =1 (static plot) &  staticIntv =2 (interactive  plot)
 #'
 #' @return None
 #' @references
@@ -48,8 +51,9 @@
 #' @export
 #'
 
-batsmanRunsVenue <- function(df,name= "A Leg Glance"){
+batsmanRunsVenue <- function(df,name= "A Leg Glance",staticIntv=1){
     batsman = runs = venue = numMatches = meanRuns = NULL
+    ggplotly=NULL
     b <- select(df,batsman,runs,venue)
     c <- summarise(group_by(b,venue),meanRuns=mean(runs),numMatches=n())
     d <- mutate(c,venue=paste(venue,"(",numMatches,")",sep=""))
@@ -63,11 +67,21 @@ batsmanRunsVenue <- function(df,name= "A Leg Glance"){
         f <- e[1:sz[1],]
     }
     plot.title = paste(name,"- Mean runs at venue")
-    ggplot(f, aes(x=venue, y=meanRuns, fill=venue))+
-        geom_bar(stat = "identity",position="dodge") +
-        geom_hline(aes(yintercept=50))+
-        ggtitle(bquote(atop(.(plot.title),
-                            atop(italic("Data source:http://cricsheet.org/"),""))))+
-        theme(axis.text.x = element_text(angle = 90, hjust = 1))
+    if(staticIntv ==1){ #ggplot2
+        ggplot(f,height=600,aes(x=venue, y=meanRuns, fill=venue))+
+            geom_bar(stat = "identity",position="dodge") +
+            geom_hline(aes(yintercept=50))+
+            ggtitle(bquote(atop(.(plot.title),
+                                atop(italic("Data source:http://cricsheet.org/"),""))))+
+            theme(axis.text.x = element_text(size=8,angle = 90, hjust = 1))
+    } else { #ggplotly
+        g <- ggplot(f, aes(x=venue, y=meanRuns, fill=venue))+
+            geom_bar(stat = "identity",position="dodge") +
+            geom_hline(aes(yintercept=50))+
+            ggtitle(plot.title) +
+            theme(axis.text.x = element_text(size=8, angle = 90, hjust = 1))
+        ggplotly(g,height=600)
+
+    }
 
 }

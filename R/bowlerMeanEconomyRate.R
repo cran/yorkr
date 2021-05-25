@@ -12,13 +12,16 @@
 #' This function computes and plots mean economy rate and the number of
 #' overs bowled by the bowler
 #' @usage
-#' bowlerMeanEconomyRate(df, name)
+#' bowlerMeanEconomyRate(df, name,staticIntv1=1)
 #'
 #' @param df
 #' Data frame
 #'
 #' @param name
 #' Name of bowler
+#'
+#' @param staticIntv1
+#' Static or interactive -staticIntv1 =1 (static plot) &  staticIntv1 =2 (interactive  plot)
 #'
 #' @return None
 #' @references
@@ -46,16 +49,27 @@
 #' @export
 #'
 
-bowlerMeanEconomyRate <- function(df,name){
+bowlerMeanEconomyRate <- function(df,name,staticIntv1=1){
     overs =meanEconomyRate = economyRate = NULL
+    ggplotly=NULL
     c <- summarise(group_by(df,overs),meanEconomyRate=mean(economyRate))
 
     plot.title <- paste(name,"- Mean Economy Rate vs Overs")
-    ggplot(c,aes(x=overs, y=meanEconomyRate,fill=overs)) +
-        geom_bar(data=c,stat="identity" ) +
-        xlab("Overs") + ylab("Mean Economy Rate") +
-        ggtitle(bquote(atop(.(plot.title),
-                            atop(italic("Data source:http://cricsheet.org/"),""))))
+    if(staticIntv1 ==1){ #ggplot2
+        ggplot(c,  width = "auto",
+               height = "auto",aes(x=overs, y=meanEconomyRate,fill=overs)) +
+            geom_bar(data=c,stat="identity" ) +
+            xlab("Overs") + ylab("Mean Economy Rate") +
+            ggtitle(bquote(atop(.(plot.title),
+                                atop(italic("Data source:http://cricsheet.org/"),""))))
+    } else { #ggplotly
+      g<- ggplot(c,aes(x=overs, y=meanEconomyRate,fill=overs)) +
+            geom_bar(data=c,stat="identity" ) +
+            xlab("Overs") + ylab("Mean Economy Rate") +
+            ggtitle(plot.title)
+      ggplotly(g)
+
+    }
 
 
 }

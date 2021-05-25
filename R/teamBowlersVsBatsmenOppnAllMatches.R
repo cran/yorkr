@@ -15,7 +15,7 @@
 #' against the opposition
 #'
 #' @usage
-#' teamBowlersVsBatsmenOppnAllMatches(matches,main,opposition,plot=TRUE,top=5)
+#' teamBowlersVsBatsmenOppnAllMatches(matches,main,opposition,plot=1,top=5)
 #'
 #' @param matches
 #' The data frame of all matches between a team the opposition. This dataframe can be obtained with
@@ -28,7 +28,7 @@
 #' The opposition team against which the performance is require
 #'
 #' @param plot
-#' If true plot else return dataframe
+#' plot=1 (static),plot=2(interactive),plot=3(table)
 #'
 #' @param top
 #' The number of rows to be returned. 5 by default
@@ -70,8 +70,9 @@
 #'
 #' @export
 #'
-teamBowlersVsBatsmenOppnAllMatches <- function(matches,main,opposition,plot=TRUE,top=5){
+teamBowlersVsBatsmenOppnAllMatches <- function(matches,main,opposition,plot=1,top=5){
     noBalls=wides=team=runs=bowler=wicketKind=wicketPlayerOut=NULL
+    ggplotly=NULL
     team=bowler=ball=wides=noballs=runsConceded=overs=batsman=NULL
     a <-filter(matches,team != main)
 
@@ -94,7 +95,7 @@ teamBowlersVsBatsmenOppnAllMatches <- function(matches,main,opposition,plot=TRUE
     }
     names(e) <- c("bowler","batsman","runsConceded")
 
-    if( plot == TRUE){
+    if(plot == 1){ #ggplot2
         plot.title = paste("Bowlers vs batsmen -",main," Vs ",opposition,"(all matches)",sep="")
         ggplot(data=e,aes(x=batsman,y=runsConceded,fill=factor(batsman))) +
             facet_grid(. ~ bowler) + geom_bar(stat="identity") +
@@ -103,6 +104,17 @@ teamBowlersVsBatsmenOppnAllMatches <- function(matches,main,opposition,plot=TRUE
             ggtitle(bquote(atop(.(plot.title),
                                     atop(italic("Data source:http://cricsheet.org/"),"")))) +
             theme(axis.text.x = element_text(angle = 90, hjust = 1))
+    } else if(plot == 2){ #ggplotly
+        plot.title = paste("Bowlers vs batsmen -",main," Vs ",opposition,"(all matches)",sep="")
+        g <- ggplot(data=e,aes(x=batsman,y=runsConceded,fill=factor(batsman))) +
+            facet_grid(. ~ bowler) + geom_bar(stat="identity") +
+            #facet_wrap( ~ bowler,scales = "free", ncol=3,drop=TRUE) + #Does not work.Check!
+            xlab("Batsman") + ylab("Runs conceded") +
+            ggtitle(plot.title) +
+            theme(axis.text.x = element_text(angle = 90, hjust = 1))
+        ggplotly(g,height=500)
+
+
     } else{
         e
     }

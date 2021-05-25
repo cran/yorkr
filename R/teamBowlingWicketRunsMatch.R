@@ -14,7 +14,7 @@
 #' The user can choose to plot or return a dataframe
 #'
 #' @usage
-#' teamBowlingWicketRunsMatch(match,theTeam,opposition,plot=TRUE)
+#' teamBowlingWicketRunsMatch(match,theTeam,opposition,plot=1)
 #'
 #' @param match
 #' The match between the teams
@@ -26,7 +26,7 @@
 #' The opposition team
 #'
 #' @param plot
-#' If plot= TRUE the dataframe will be plotted else a data frame will be returned
+#' plot=1 (static),plot=2(interactive),plot=3(table)
 #'
 #' @return None or data fame
 #' A data frame with the bowling performance in all matches against all oppositions
@@ -57,9 +57,10 @@
 #'
 #' @export
 #'
-teamBowlingWicketRunsMatch <- function(match,theTeam,opposition, plot=TRUE){
+teamBowlingWicketRunsMatch <- function(match,theTeam,opposition, plot=1){
     print("wicketruns")
     noBalls=wides=team=runs=bowler=wicketKind=wicketPlayerOut=NULL
+    ggplotly=NULL
     team=bowler=ball=wides=noballs=runsConceded=overs=over=wickets=NULL
     # The performance of bowlers of the team is got when the other side is batting. Hence '!-"
     # Filter the bowler's performance
@@ -115,7 +116,7 @@ teamBowlingWicketRunsMatch <- function(match,theTeam,opposition, plot=TRUE){
     }
 
     # Plot or ourput data frame
-    if(plot == TRUE){
+    if(plot == 1){ #ggplot2
         plot.title <- paste(theTeam,"Wicket vs Runs conceded (against",opposition,")")
 
        p <- ggplot(data=l,aes(x=factor(wickets),y=runs,fill=factor(wickets))) +
@@ -128,6 +129,17 @@ teamBowlingWicketRunsMatch <- function(match,theTeam,opposition, plot=TRUE){
             theme(plot.title = element_text(size=14,margin=margin(10)))
 
         p
+    }   else if(plot == 2){ #ggplotly
+        plot.title <- paste(theTeam,"Wicket vs Runs conceded (against",opposition,")")
+
+        p <- ggplot(data=l,aes(x=factor(wickets),y=runs,fill=factor(wickets))) +
+            facet_grid(. ~ bowler,scales = "free_x", space = "free_x") +
+            geom_bar(stat="identity") +
+            xlab("Number of wickets") + ylab("Total runs conceded") +
+            ggtitle(plot.title) +
+            theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+            theme(plot.title = element_text(size=14,margin=margin(10)))
+        ggplotly(p)
     }
     else {
         l

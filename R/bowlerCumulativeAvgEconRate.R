@@ -12,13 +12,16 @@
 #' This function computes and plots the cumulative average economy rate  of a bowler
 #'
 #' @usage
-#' bowlerCumulativeAvgEconRate(df,name)
+#' bowlerCumulativeAvgEconRate(df,name,staticIntv1=1)
 #'
 #' @param df
 #' Data frame
 #'
 #' @param name
 #' Name of batsman
+#'
+#' @param staticIntv1
+#' Static or interactive -staticIntv1 =1 (static plot) &  staticIntv1 =2 (interactive  plot)
 #'
 #' @return None
 #' @references
@@ -46,16 +49,26 @@
 #'
 #' @export
 #'
-bowlerCumulativeAvgEconRate <- function(df,name){
+bowlerCumulativeAvgEconRate <- function(df,name,staticIntv1=1){
     economyRate=cs=no=NULL
+    ggplotly=NULL
     b <- select(df,economyRate)
     b$no<-seq.int(nrow(b))
     c <- select(b,no,economyRate)
 
     d <- mutate(c,cs=cumsum(economyRate)/no)
     plot.title= paste(name,"- Cum. avg Econ Rate vs No innings")
-    ggplot(d) + geom_line(aes(x=no,y=cs),col="blue") +
-        xlab("No of innings") + ylab("Cumulative Avg. Economy Rate") +
-        ggtitle(bquote(atop(.(plot.title),
-                            atop(italic("Data source:http://cricsheet.org/"),""))))
+    if(staticIntv1 ==1){ #ggplot2
+        ggplot(d) + geom_line(aes(x=no,y=cs),col="blue") +
+            xlab("No of innings") + ylab("Cumulative Avg. Economy Rate") +
+            ggtitle(bquote(atop(.(plot.title),
+                                atop(italic("Data source:http://cricsheet.org/"),""))))
+    } else { #ggplotly
+
+        g <- ggplot(d) + geom_line(aes(x=no,y=cs),col="blue") +
+            xlab("No of innings") + ylab("Cumulative Avg. Economy Rate") +
+            ggtitle(plot.title)
+        ggplotly(g)
+
+    }
 }

@@ -14,13 +14,13 @@
 #' The data frame can be either plotted or returned to the user
 #'
 #' @usage
-#' teamBatsmenVsBowlersAllOppnAllMatchesPlot(df,plot=TRUE)
+#' teamBatsmenVsBowlersAllOppnAllMatchesPlot(df,plot=1)
 #'
 #' @param df
 #' The dataframe of all the matches of the team against all oppositions
 #'
 #' @param plot
-#' If plot=TRUE the result is plotted or else the data frame is returned
+#' plot=1 (static),plot=2(interactive), plot=3 (table)
 #'
 #'
 #' @return None or dataframe
@@ -56,17 +56,27 @@
 #'
 #' @export
 #'
-teamBatsmenVsBowlersAllOppnAllMatchesPlot <- function(df,plot=TRUE)
+teamBatsmenVsBowlersAllOppnAllMatchesPlot <- function(df,plot=1)
 {
     runs=bowler=NULL
+    ggplotly=NULL
     bman <- df$batsman
-    if(plot==TRUE){
+    if(plot == 1){ #ggplot2
         plot.title <- paste(bman,"-Performances against all bowlers")
         ggplot(data=df,aes(x=bowler,y=runs,fill=factor(bowler))) +
             facet_grid(~ batsman) + geom_bar(stat="identity") +
             ggtitle(bquote(atop(.(plot.title),
                                 atop(italic("Data source:http://cricsheet.org/"),"")))) +
             theme(axis.text.x = element_text(angle = 90, hjust = 1))
+    } else if(plot == 2){ #ggplotly
+
+        plot.title <- paste(bman,"-Performances against all bowlers")
+        g <- ggplot(data=df,aes(x=bowler,y=runs,fill=factor(bowler))) +
+            facet_grid(~ batsman) + geom_bar(stat="identity") +
+            ggtitle(plot.title) +
+            theme(axis.text.x = element_text(angle = 90, hjust = 1))
+        ggplotly(g,height=500)
+
     }else{
         df
     }

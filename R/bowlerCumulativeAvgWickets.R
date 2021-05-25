@@ -12,13 +12,16 @@
 #' This function computes and plots the cumulative average wickets of a bowler
 #'
 #' @usage
-#' bowlerCumulativeAvgWickets(df,name)
+#' bowlerCumulativeAvgWickets(df,name,staticIntv1=1)
 #'
 #' @param df
 #' Data frame
 #'
 #' @param name
 #' Name of batsman
+#'
+#' @param staticIntv1
+#' Static or interactive -staticIntv1 =1 (static plot) &  staticIntv1 =2 (interactive  plot)
 #'
 #' @return None
 #' @references
@@ -46,16 +49,24 @@
 #'
 #' @export
 #'
-bowlerCumulativeAvgWickets <- function(df,name){
+bowlerCumulativeAvgWickets <- function(df,name,staticIntv1=1){
     wickets=cs=no=NULL
+    ggplotly=NULL
     b <- select(df,wickets)
     b$no<-seq.int(nrow(b))
     c <- select(b,no,wickets)
 
     d <- mutate(c,cs=cumsum(wickets)/no)
     plot.title= paste(name,"- Cumulative avg wkts vs No innings")
-    ggplot(d) + geom_line(aes(x=no,y=cs),col="blue") +
-        xlab("No of innings") + ylab("Cumulative Avg. wickets") +
-        ggtitle(bquote(atop(.(plot.title),
-                            atop(italic("Data source:http://cricsheet.org/"),""))))
+    if(staticIntv1 ==1){ #ggplot2
+        ggplot(d) + geom_line(aes(x=no,y=cs),col="blue") +
+            xlab("No of innings") + ylab("Cumulative Avg. wickets") +
+            ggtitle(bquote(atop(.(plot.title),
+                                atop(italic("Data source:http://cricsheet.org/"),""))))
+    } else {
+       g <- ggplot(d) + geom_line(aes(x=no,y=cs),col="blue") +
+            xlab("No of innings") + ylab("Cumulative Avg. wickets") +
+           ggtitle(plot.title)
+       ggplotly(g)
+    }
 }

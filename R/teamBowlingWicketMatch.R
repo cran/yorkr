@@ -13,7 +13,7 @@
 #' This function computes returns the wickets taken bowlers in a match between 2 teams
 #'
 #' @usage
-#' teamBowlingWicketMatch(match,theTeam,opposition, plot=TRUE)
+#' teamBowlingWicketMatch(match,theTeam,opposition, plot=1)
 #'
 #' @param match
 #' The match between the teams
@@ -25,7 +25,7 @@
 #' The opposition team
 #'
 #' @param plot
-#' If plot= TRUE the dataframe will be plotted else a data frame will be returned
+#' plot=1 (static),plot=2(interactive), plot=3 (table)
 #'
 #' @return None or data fame
 #' A data frame with the bowling performance in alll matches against all oppositions
@@ -56,8 +56,9 @@
 #'
 #' @export
 #'
-teamBowlingWicketMatch <- function(match,theTeam,opposition,plot=TRUE){
+teamBowlingWicketMatch <- function(match,theTeam,opposition,plot=1){
     noBalls=wides=team=runs=bowler=wicketKind=wicketPlayerOut=NULL
+    ggplotly=NULL
     team=bowler=ball=wides=noballs=runsConceded=overs=over=NULL
     # The bowlers performance of the team is got when the other side is batting. Hence '!-"
     # Filter the data frame
@@ -103,7 +104,7 @@ teamBowlingWicketMatch <- function(match,theTeam,opposition,plot=TRUE){
         j[is.na(j$wicketPlayerOut),]$wicketPlayerOut="noWicket"
     }
 
-    if(plot == TRUE){
+    if(plot == 1){ #ggplot2
         plot.title <- paste(theTeam,"No of Wickets vs Runs conceded (against",opposition,")")
         p <-ggplot(data=j,aes(x=wicketPlayerOut,y=runs,fill=factor(wicketPlayerOut))) +
             facet_grid(. ~ bowler,scales = "free_x", space = "free_x") +
@@ -114,6 +115,17 @@ teamBowlingWicketMatch <- function(match,theTeam,opposition,plot=TRUE){
             theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
             theme(plot.title = element_text(size=14,margin=margin(10)))
         p
+    } else if(plot == 2){ #ggplotly
+        plot.title <- paste(theTeam,"No of Wickets vs Runs conceded (against",opposition,")")
+        p <-ggplot(data=j,aes(x=wicketPlayerOut,y=runs,fill=factor(wicketPlayerOut))) +
+            facet_grid(. ~ bowler,scales = "free_x", space = "free_x") +
+            geom_bar(stat="identity") +
+            xlab("Batsman out") + ylab("Total runs conceded") +
+            ggtitle(plot.title) +
+            theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+            theme(plot.title = element_text(size=14,margin=margin(10)))
+        ggplotly(p)
+
     }
     else{
         j

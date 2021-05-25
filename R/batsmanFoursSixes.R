@@ -12,13 +12,16 @@
 #' This function computes and plots the total runs, fours and sixes of
 #' the batsman
 #' @usage
-#' batsmanFoursSixes(df,name= "A Leg Glance")
+#' batsmanFoursSixes(df,name= "A Leg Glance",staticIntv=1)
 #'
 #' @param df
 #' Data frame
 #'
 #' @param name
 #' Name of batsman
+#'
+#' @param staticIntv
+#' Static or interactive -staticIntv =1 (static plot) &  staticIntv =2 (interactive  plot)
 #'
 #' @return None
 #' @references
@@ -47,21 +50,35 @@
 #'
 #' @export
 #'
-batsmanFoursSixes <- function(df,name= "A Leg Glance"){
-    fours <- sixes <- batsman <- ballsPlayed <- RunsFromFours <- NULL
+batsmanFoursSixes <- function(df,name= "A Leg Glance",staticIntv=1){
+    fours <- sixes <- batsman <- ballsPlayed <- RunsFromFours <- runs <- NULL
+    ggplotly=NULL
     RunsFromSixes <- TotalRuns <- value <- variable <- NULL
+    df <- select(df,batsman,ballsPlayed,fours,sixes,runs)
     names(df) <- c("batsman","ballsPlayed","fours","sixes","TotalRuns")
+    print(head(df,30))
     c <- mutate(df, RunsFromFours=fours*4,RunsFromSixes=sixes*6)
     d <- select(c, batsman,ballsPlayed,RunsFromFours,RunsFromSixes,TotalRuns)
     e <- melt(d,id=c("batsman","ballsPlayed"))
 
+
     plot.title = paste(name,"- Total runs, 4s and 6s vs Balls Faced")
-    ggplot(e) + geom_point(aes(x=ballsPlayed, y=value, colour=variable)) +
-        geom_smooth(aes(x=ballsPlayed, y=value, colour=variable)) +
-        scale_colour_manual(values=c("red","green","blue")) +
-        xlab("Deliveries faced") + ylab("Runs") +
-        ggtitle(bquote(atop(.(plot.title),
-                            atop(italic("Data source:http://cricsheet.org/"),""))))
+    if(staticIntv ==1){ #ggplot2{
+        ggplot(e) + geom_point(aes(x=ballsPlayed, y=value, colour=variable)) +
+            geom_smooth(aes(x=ballsPlayed, y=value, colour=variable)) +
+            scale_colour_manual(values=c("red","green","blue")) +
+            xlab("Deliveries faced") + ylab("Runs") +
+            ggtitle(bquote(atop(.(plot.title),
+                                atop(italic("Data source:http://cricsheet.org/"),""))))
+    } else {
+        g <- ggplot(e) + geom_point(aes(x=ballsPlayed, y=value, colour=variable)) +
+            geom_smooth(aes(x=ballsPlayed, y=value, colour=variable)) +
+            scale_colour_manual(values=c("red","green","blue")) +
+            xlab("Deliveries faced") + ylab("Runs") +
+            ggtitle(plot.title)
+
+        ggplotly(g)
+    }
 
 
 }

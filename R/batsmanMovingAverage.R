@@ -14,13 +14,16 @@
 #' the batsman
 #'
 #' @usage
-#' batsmanMovingAverage(df, name= "A Leg Glance")
+#' batsmanMovingAverage(df, name= "A Leg Glance",staticIntv=1)
 #'
 #' @param df
 #' Data frame
 #'
 #' @param name
 #' Name of batsman
+#'
+#' @param staticIntv
+#' Static or interactive -staticIntv =1 (static plot) &  staticIntv =2 (interactive  plot)
 #'
 #' @return None
 #' @references
@@ -48,14 +51,25 @@
 #'
 #' @export
 #'
-batsmanMovingAverage <- function(df,name = "A Leg Glance"){
+#'
+batsmanMovingAverage <- function(df,name = "A Leg Glance",staticIntv=1){
     batsman = runs = NULL
+    ggplotly=NULL
     b <- select(df,batsman,runs,date)
 
     plot.title = paste(name,"- Moving average of runs in career")
-    ggplot(b) + geom_line(aes(x=date, y=runs),colour="darkgrey") +
-        geom_smooth(aes(x=date, y=runs)) +
-        xlab("Date") + ylab("Runs") +
-        ggtitle(bquote(atop(.(plot.title),
-                            atop(italic("Data source:http://cricsheet.org/"),""))))
+    if(staticIntv ==1){ #ggplot2
+        ggplot(b) + geom_line(aes(x=date, y=runs),colour="darkgrey") +
+            geom_smooth(aes(x=date, y=runs)) +
+            xlab("Date") + ylab("Runs") +
+            ggtitle(bquote(atop(.(plot.title),
+                                atop(italic("Data source:http://cricsheet.org/"),""))))
+    } else { #ggplotly
+        g <- ggplot(b) + geom_line(aes(x=date, y=runs),colour="darkgrey") +
+            geom_smooth(aes(x=date, y=runs)) +
+            xlab("Date") + ylab("Runs") +
+            ggtitle(plot.title)
+
+        ggplotly(g)
+    }
 }

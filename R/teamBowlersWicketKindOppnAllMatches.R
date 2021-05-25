@@ -14,7 +14,7 @@
 #' opposition in all matches against the opposition
 #'
 #' @usage
-#' teamBowlersWicketKindOppnAllMatches(matches,main,opposition,plot=TRUE)
+#' teamBowlersWicketKindOppnAllMatches(matches,main,opposition,plot=1)
 #'
 #' @param matches
 #' The data frame of all matches between a team the opposition. This dataframe can be obtained with
@@ -27,7 +27,8 @@
 #' The opposing team
 #'
 #' @param plot
-#' If plot=TRUE then a plot is displayed else a dataframe is returned
+#' #' @param plot
+#' plot=1 (static),plot=2(interactive),plot=3(table)
 #'
 #' @return None or dataframe
 #' The return depends on the value of the plot
@@ -62,8 +63,9 @@
 #'
 #' @export
 #'
-teamBowlersWicketKindOppnAllMatches <- function(matches,main,opposition,plot=TRUE){
+teamBowlersWicketKindOppnAllMatches <- function(matches,main,opposition,plot=1){
     team=bowler=ball=NULL
+    ggplotly=NULL
     runs=over=runsConceded=NULL
 
     byes=legbyes=noballs=wides=runConceded=NULL
@@ -103,7 +105,7 @@ teamBowlersWicketKindOppnAllMatches <- function(matches,main,opposition,plot=TRU
         r[is.na(r$wicketPlayerOut),]$wicketPlayerOut="noWicket"
     }
 
-    if(plot == TRUE){
+    if(plot == 1){ #ggplot2
         plot.title = paste("Wicket kind taken by bowlers -",main," Vs ",opposition,"(all matches)",sep="")
         ggplot(data=r,aes(x=wicketKind,y=runs,fill=factor(wicketKind))) +
             facet_wrap( ~ bowler,scales = "fixed", ncol=8) +
@@ -112,6 +114,15 @@ teamBowlersWicketKindOppnAllMatches <- function(matches,main,opposition,plot=TRU
             ggtitle(bquote(atop(.(plot.title),
                                 atop(italic("Data source:http://cricsheet.org/"),"")))) +
             theme(axis.text.x = element_text(angle = 90, hjust = 1))
+    } else if(plot == 2){ #ggplotly
+        plot.title = paste("Wicket kind taken by bowlers -",main," Vs ",opposition,"(all matches)",sep="")
+        g <- ggplot(data=r,aes(x=wicketKind,y=runs,fill=factor(wicketKind))) +
+            facet_wrap( ~ bowler,scales = "fixed", ncol=8) +
+            geom_bar(stat="identity") +
+            xlab("Wicket kind") + ylab("Runs conceded") +
+            ggtitle(plot.title) +
+            theme(axis.text.x = element_text(angle = 90, hjust = 1))
+        ggplotly(g,height=500)
     }
     else{
         r

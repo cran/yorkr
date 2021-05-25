@@ -12,7 +12,7 @@
 #' This function  plots the match worm graph between 2 teams in a match
 #'
 #' @usage
-#' matchWormGraph(match,t1,t2)
+#' matchWormGraph(match,t1,t2,plot=1)
 #'
 #' @param match
 #' The dataframe of the match
@@ -22,6 +22,9 @@
 #'
 #' @param t2
 #' the 2nd team in the match
+#'
+#' @param plot
+#' Plot=1 (static), Plot=2(interactive)
 #'
 #' @return none
 #'
@@ -51,8 +54,9 @@
 #'
 #' @export
 #'
-matchWormGraph <- function(match,t1,t2) {
-    team=ball=totalRuns=NULL
+matchWormGraph <- function(match,t1,t2,plot=1) {
+    team=ball=totalRuns=total=NULL
+    ggplotly=NULL
     # Filter the performance of team1
     a <-filter(match,team==t1)
     b <- select(a,ball,totalRuns)
@@ -79,11 +83,27 @@ matchWormGraph <- function(match,t1,t2) {
     # Compute cumulative sum vs balls bowled
     d1 <- mutate(c1,total=cumsum(totalRuns))
 
+    # Convert to numeric
+    d$ball=as.numeric(d$ball)
+    d1$ball=as.numeric(d1$ball)
     # Plot both lines
-    plot(d$ball,d$total,col="blue",type="l",lwd=2,xlab="Overs",ylab='Runs',
-         main="Worm chart of match")
-    lines(d1$ball,d1$total,type="l",col="red",lwd=2)
-    teams <-c(t1,t2)
-    legend(x="topleft",legend=teams,
-           col=c("blue","red"),bty="n",cex=0.8,lty=1,lwd=2)
+    if(plot ==1){ #ggplot2
+      ggplot() +
+        geom_line(data = d, aes(x = ball, y = total, color = t1)) +
+        geom_line(data = d1, aes(x = ball, y = total, color = t2))+
+         ggtitle(bquote(atop(.("Worm chart of match"),
+                             atop(italic("Data source:http://cricsheet.org/"),""))))
+
+    }else { #ggplotly
+        g <- ggplot() +
+            geom_line(data = d, aes(x = ball, y = total, color = t1)) +
+            geom_line(data = d1, aes(x = ball, y = total, color = t2))+
+            ggtitle("Worm chart of match")
+
+
+        ggplotly(g)
+
+    }
+
+
 }

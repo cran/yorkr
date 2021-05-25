@@ -12,13 +12,16 @@
 #' This function computes and plots mean runs conceded by the bowler for the
 #' number of overs bowled by the bowler
 #' @usage
-#' bowlerMeanRunsConceded(df, name)
+#' bowlerMeanRunsConceded(df, name,staticIntv1=1)
 #'
 #' @param df
 #' Data frame
 #'
 #' @param name
 #' Name of bowler
+#'
+#' @param staticIntv1
+#' Static or interactive -staticIntv1 =1 (static plot) &  staticIntv1 =2 (interactive  plot)
 #'
 #' @return None
 #' @references
@@ -46,14 +49,23 @@
 #' @export
 #'
 
-bowlerMeanRunsConceded <- function(df,name){
+bowlerMeanRunsConceded <- function(df,name,staticIntv1=1){
     overs = runs = maidens = meanRuns = wickets = NULL
+    ggplotly=NULL
     c <- summarise(group_by(df,overs),meanRuns=mean(runs),meanMaidens=mean(maidens),
                    meanWickets=mean(wickets))
     plot.title <- paste(name,"- Average runs conceded vs Overs")
-    ggplot(c,aes(x=overs, y=meanRuns,fill=overs)) +
-        geom_bar(data=c,stat="identity" ) +
-        xlab("Overs") + ylab("Average runs conceded") +
-        ggtitle(bquote(atop(.(plot.title),
-                            atop(italic("Data source:http://cricsheet.org/"),""))))
+    if(staticIntv1 ==1){ #ggplot2
+        ggplot(c,aes(x=overs, y=meanRuns,fill=overs)) +
+            geom_bar(data=c,stat="identity" ) +
+            xlab("Overs") + ylab("Average runs conceded") +
+            ggtitle(bquote(atop(.(plot.title),
+                                atop(italic("Data source:http://cricsheet.org/"),""))))
+    }else { #ggplotly
+        g <- ggplot(c,aes(x=overs, y=meanRuns,fill=overs)) +
+            geom_bar(data=c,stat="identity" ) +
+            xlab("Overs") + ylab("Average runs conceded") +
+            ggtitle(plot.title)
+        ggplotly(g)
+    }
 }
