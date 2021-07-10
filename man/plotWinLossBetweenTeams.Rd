@@ -4,7 +4,7 @@
 \alias{plotWinLossBetweenTeams}
 \title{Plot  wins for each team}
 \usage{
-plotWinLossBetweenTeams(team1,team2,dir=".",plot=1)
+plotWinLossBetweenTeams(team1,team2,dir=".",dateRange, plot=1)
 }
 \arguments{
 \item{team1}{The 1st team}
@@ -12,6 +12,8 @@ plotWinLossBetweenTeams(team1,team2,dir=".",plot=1)
 \item{team2}{The 2nd team}
 
 \item{dir}{The source directory of teh RData files}
+
+\item{dateRange}{Date Range}
 
 \item{plot}{plot=1 (static),plot=2(interactive)}
 }

@@ -1,4 +1,4 @@
-90d85e6c9a26b46945c0a10cfce32f72 *DESCRIPTION
+2b0744cbf0a55adddaf619ef0d086e07 *DESCRIPTION
 6914dc28ebaad40ba87775fd412ed594 *LICENSE
 eb0ea2da5c204f579d6bcf0681b1139c *NAMESPACE
 f73360682c493a168d9793ebe64b55ea *R/batsmanCumulativeAverageRuns.R
@@ -57,8 +57,8 @@ a2122275bfa67d4319bdb3fd6f858776 *R/getSSMBattingDetails.R
 dc21b3a0ff85c0258339250258fecf85 *R/helper3.R
 91d1017ae41743b807215c0ee4b70458 *R/matchWormChart.R
 ce86119cc0339d0ac7587160566a7e71 *R/parseYamlOver.R
-752e1c6a3fb694fd0acccf7b119e29fc *R/plotWinLossBetweenTeams.R
-ae08bc54a92ad71c1d9954d4dfd31b2d *R/plotWinLossTeamVsAllTeams.R
+e08badd02aa1633b32feedb18850fe9b *R/plotWinLossBetweenTeams.R
+3fcacc61b1508642ad708a6fad4803e6 *R/plotWinLossTeamVsAllTeams.R
 41847ad36e33afa918ddcadf7f4c146a *R/rankODIBatsmen.R
 c0b6f0f2ea447eb8f378af2a0d0ac944 *R/rankODIBowlers.R
 68f79a58247c5cab0f9edc22e6cb146d *R/rankT20Batsmen.R
@@ -168,8 +168,8 @@ c5428e78be896f1039c17558a5614873 *man/getWBBBattingDetails.Rd
 c372869575e384a0728bd5e2e3c4178f *man/helper3.Rd
 c03e4d554e5b3eaf01ba8ee02d0dac9b *man/matchWormGraph.Rd
 8ff80431e4aeeeb12ac9d28a965b73ec *man/parseYamlOver.Rd
-d08505daee22bdb3875eb4515a4eab60 *man/plotWinLossBetweenTeams.Rd
-3b48ee927ff625174055b11a6c560fff *man/plotWinLossTeamVsAllTeams.Rd
+5ef095d2df0227ab3d5ca22601a42b46 *man/plotWinLossBetweenTeams.Rd
+c6b80c0ed99b4c233ca6ab965e3261e2 *man/plotWinLossTeamVsAllTeams.Rd
 744a3e90671ca8450b226082c37a5a97 *man/rankODIBatsmen.Rd
 3d78fe90f3e967f00d10a466f5920e24 *man/rankODIBowlers.Rd
 277e70a6f270ef01a163225197d9eb85 *man/rankT20Batsmen.Rd
