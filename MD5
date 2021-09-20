@@ -1,4 +1,4 @@
-2b0744cbf0a55adddaf619ef0d086e07 *DESCRIPTION
+05679676d1770b0f0767b3f0d443ecb7 *DESCRIPTION
 6914dc28ebaad40ba87775fd412ed594 *LICENSE
 eb0ea2da5c204f579d6bcf0681b1139c *NAMESPACE
 f73360682c493a168d9793ebe64b55ea *R/batsmanCumulativeAverageRuns.R
@@ -22,9 +22,9 @@ d51a44227e8e9a0bd5d3cec021307b15 *R/bowlerWicketsAgainstOppn.R
 2b4e52e174e8bacbf64a232d009b1aff *R/bowlerWicketsVenue.R
 ae86b6f1589980eec0bf385c6ee36815 *R/bowlerWktsPredict.R
 eea2b64fe476e01fe316ce6f91e500b6 *R/convertAllYaml2RDataframes.R
-abc45125a82ac2a473f9dbd16c49897d *R/convertAllYaml2RDataframesT20.R
+3a13d11712c1c7d19fb3ff984fd64886 *R/convertAllYaml2RDataframesT20.R
 23234f781fcf293739b3692fbcb87906 *R/convertYaml2RDataframe.R
-65ceb648686659338736c2dd2ba26d36 *R/convertYaml2RDataframeT20.R
+f6e614353abc06b8dca1b824581d0633 *R/convertYaml2RDataframeT20.R
 4b47edf9709e6dfccf1a79b8e6840d8f *R/getAllMatchesAllOpposition.R
 0477c8ad272b0fec84db2ca59340b1a6 *R/getAllMatchesBetweenTeams.R
 938f9e46763f417b96913a1c9d721058 *R/getBBLBattingDetails.R
