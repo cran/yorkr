@@ -11,7 +11,7 @@
 #' @description
 #' This function gets min,max date and min and max matches from dataframe
 #' @usage
-#' helper1(teamNames,dateRange,odir=".")
+#' helper1(teamNames,dateRange, dir=".",type="IPL")
 #'
 #' @param teamNames
 #' The team names
@@ -19,11 +19,13 @@
 #' @param dateRange
 #' Date interval to consider
 #'
-#' @param odir
-#' The output directory
+#' @param dir
+#' The input directory
 #'
+#' @param type
+#' T20 format
 #'
-#' @return minDate,maxDate,minMatches, maxMatches
+#' @return minMatches, maxMatches
 #' @references
 #' \url{https://cricsheet.org/}\cr
 #' \url{https://gigadom.in/}\cr
@@ -41,32 +43,18 @@
 #' \code{\link{rankT20Bowlers}}\cr
 #' @export
 #'
-helper1<- function(teamNames,dateRange, odir=".") {
+helper1<- function(teamNames,dateRange, dir=".",type="IPL") {
 
     currDir= getwd()
 
     battingDetails=batsman=runs=strikeRate=matches=meanRuns=meanSR=battingDF=val=NULL
-
+    setwd(dir)
     teams = unlist(teamNames)
-    #Change dir
-    setwd(odir)
-    battingDF<-NULL
-    for(team in teams){
-        battingDetails <- NULL
-        val <- paste(team,"-BattingDetails.RData",sep="")
-        print(val)
-        tryCatch(load(val),
-                 error = function(e) {
-                     print("No data1")
-                     setNext=TRUE
-                 }
-
-
-        )
-        details <- battingDetails
-        battingDF <- rbind(battingDF,details)
-
-    }
+    battingDetails <- paste(type,"-BattingDetails.RData",sep="")
+    print(battingDetails)
+    load(battingDetails)
+    print(dim(battingDF))
+    print(names(battingDF))
 
     maxDate= as.Date(max(battingDF$date))
     minDate= as.Date(min(battingDF$date))

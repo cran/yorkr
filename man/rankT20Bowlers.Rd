@@ -4,21 +4,18 @@
 \alias{rankT20Bowlers}
 \title{Ranks the T20 bowlers}
 \usage{
-rankT20Bowlers(teamNames,odir=".",minMatches, dateRange, wicketsVsER)
+rankT20Bowlers(dir=".",minMatches, dateRange, wicketsVsER,type)
 }
 \arguments{
-\item{teamNames}{The team names}
-
-\item{odir}{The output directory}
+\item{dir}{The directory}
 
 \item{minMatches}{Minimum matches played}
 
 \item{dateRange}{Date interval to consider}
 
 \item{wicketsVsER}{Wickets  or economy rate}
-}
-\value{
-The ranked T20 bowlers
+
+\item{type}{T20 format}
 }
 \description{
 This function creates a single datframe of all T20 bowlers and then ranks them
@@ -28,7 +25,7 @@ Maintainer: Tinniam V Ganesh \email{tvganesh.85@gmail.com}
 }
 \examples{
 \dontrun{
-rankT20Bowlers(teamNames,odir=".",minMatches, dateRange, wicketsVsER)
+rankT20Bowlers(dir=".",minMatches, dateRange, wicketsVsER,type)
 }
 
 }

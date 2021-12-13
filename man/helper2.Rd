@@ -4,15 +4,17 @@
 \alias{helper2}
 \title{Gets min,max date and min and max matches from dataframe}
 \usage{
-helper2(teamNames,odir=".")
+helper2(teamNames,dir=".",type="IPL")
 }
 \arguments{
 \item{teamNames}{The team names}
 
-\item{odir}{The output directory}
+\item{dir}{The output directory}
+
+\item{type}{T20 format}
 }
 \value{
-minDate,maxDate, bowingDF
+minDate,maxDate, minMatches, maxMatches
 }
 \description{
 This function gets min,max date and min and max matches from dataframe

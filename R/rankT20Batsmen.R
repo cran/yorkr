@@ -12,13 +12,11 @@
 #' @description
 #' This function creates a single datframe of all T20 batsmen and then ranks them
 #' @usage
-#' rankT20Batsmen(teamNames,odir=".",minMatches, dateRange, runsvsSR)
+#' rankT20Batsmen(dir=".",minMatches, dateRange, runsvsSR,type)
 #'
-#' @param teamNames
-#' The team names
 #'
-#' @param odir
-#' The output directory
+#' @param dir
+#' The input directory
 #'
 #' @param minMatches
 #' Minimum matches played
@@ -29,7 +27,9 @@
 #' @param runsvsSR
 #'  Runs or Strike rate
 #'
-#' @return The ranked T20 batsmen
+#' @param type
+#' T20 format
+#'
 #' @references
 #' \url{https://cricsheet.org/}\cr
 #' \url{https://gigadom.in/}\cr
@@ -42,7 +42,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' rankT20Batsmen(teamNames,odir=".",minMatches, dateRange, runsvsSR)
+#' rankT20Batsmen(dir=".",minMatches, dateRange, runsvsSR,type)
 #' }
 #'
 #' @seealso
@@ -51,72 +51,58 @@
 #' \code{\link{rankT20Bowlers}}\cr
 #' @export
 #'
-rankT20Batsmen <- function(teamNames,odir=".",minMatches, dateRange, runsvsSR) {
+rankT20Batsmen <- function(dir=".",minMatches, dateRange, runsvsSR,type) {
 
-    cat("Entering rank Batsmen1 \n")
-    currDir= getwd()
-    cat("T20batmandir=",currDir,"\n")
-    battingDetails=batsman=runs=strikeRate=matches=meanRuns=meanSR=battingDF=val=year=NULL
-    teams = unlist(teamNames)
-    #Change dir
-    cat("odir=",odir)
-    setwd(odir)
-    battingDF<-NULL
-    for(team in teams){
-        battingDetails <- NULL
-        val <- paste(team,"-BattingDetails.RData",sep="")
-        print(val)
-        tryCatch(load(val),
-                 error = function(e) {
-                     print("No data1")
-                     setNext=TRUE
-                 }
+  cat("Entering rank Batsmen1 \n")
+  currDir= getwd()
+  cat("T20batman   dir=",currDir,"\n")
+  battingDetails=batsman=runs=strikeRate=matches=meanRuns=meanSR=battingDF=val=year=NULL
 
+  cat("dir=",dir)
+  setwd(dir)
+  battingDF<-NULL
+  battingDetails <- paste(type,"-BattingDetails.RData",sep="")
+  print(battingDetails)
+  load(battingDetails)
+  print(dim(battingDF))
+  print(names(battingDF))
+  # Note: If the date Range is NULL setback to root directory
+  tryCatch({
 
-        )
-        details <- battingDetails
-        battingDF <- rbind(battingDF,details)
+    df=battingDF %>% filter(date >= dateRange[1]  & date <= dateRange[2])
 
-    }
-    print(dim(battingDF))
-    print(names(battingDF))
-      # Note: If the date Range is NULL setback to root directory
-     tryCatch({
-
-           df=battingDF %>% filter(date >= dateRange[1]  & date <= dateRange[2])
-
-     },
-     warning=function(war)
-     {
-           print(paste("NULL values: ", war))
-      },
-     error=function(err)
-     {
-           # Change to root directory on error
-           setwd(currDir)
-           cat("Back to root",getwd(),"\n")
-     })
-
-
-
-
-
-    df1 <- select(df,batsman,runs,strikeRate)
-    df1 <- distinct(df1)
-
-    b=summarise(group_by(df1,batsman),matches=n(), meanRuns=mean(runs),meanSR=mean(strikeRate))
-    print(dim(b))
-    b[is.na(b)] <- 0
-
-    c <- filter(b,matches >= minMatches)
-    # Reset to currDir
+  },
+  warning=function(war)
+  {
+    print(paste("NULL values: ", war))
+  },
+  error=function(err)
+  {
+    # Change to root directory on error
     setwd(currDir)
+    cat("Back to root",getwd(),"\n")
+  })
 
-    if(runsvsSR == "Runs over Strike rate"){
-        T20BatsmenRank <- arrange(c,desc(meanRuns),desc(meanSR))
-    } else if (runsvsSR == "Strike rate over Runs"){
-        T20BatsmenRank <- arrange(c,desc(meanSR),desc(meanRuns))
-    }
-    T20BatsmenRank
+
+
+
+
+  df1 <- select(df,batsman,runs,strikeRate)
+  df1 <- distinct(df1)
+
+  b=summarise(group_by(df1,batsman),matches=n(), meanRuns=mean(runs),meanSR=mean(strikeRate))
+  print(dim(b))
+  b[is.na(b)] <- 0
+
+  c <- filter(b,matches >= minMatches)
+  # Reset to currDir
+  setwd(currDir)
+
+  if(runsvsSR == "Runs over Strike rate"){
+    T20BatsmenRank <- arrange(c,desc(meanRuns),desc(meanSR))
+  } else if (runsvsSR == "Strike rate over Runs"){
+    T20BatsmenRank <- arrange(c,desc(meanSR),desc(meanRuns))
+  }
+  T20BatsmenRank
 
 }

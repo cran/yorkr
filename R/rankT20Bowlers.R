@@ -12,15 +12,11 @@
 #' This function creates a single datframe of all T20 bowlers and then ranks them
 #'
 #' @usage
-#' rankT20Bowlers(teamNames,odir=".",minMatches, dateRange, wicketsVsER)
-#'
-#' @param teamNames
-#' The team names
-#'
-#' @param odir
+#' rankT20Bowlers(dir=".",minMatches, dateRange, wicketsVsER,type)
 #'
 #'
-#' The output directory
+#' @param dir
+#' The directory
 #'
 #' @param minMatches
 #' Minimum matches played
@@ -31,7 +27,9 @@
 #' @param wicketsVsER
 #' Wickets  or economy rate
 #'
-#' @return The ranked T20 bowlers
+#' @param type
+#' T20 format
+#'
 #' @references
 #' \url{https://cricsheet.org/}\cr
 #' \url{https://gigadom.in/}\cr
@@ -45,7 +43,7 @@
 #'
 #'@examples
 #' \dontrun{
-#' rankT20Bowlers(teamNames,odir=".",minMatches, dateRange, wicketsVsER)
+#' rankT20Bowlers(dir=".",minMatches, dateRange, wicketsVsER,type)
 #' }
 #'
 #' @seealso
@@ -55,33 +53,21 @@
 #' \code{\link{rankT20Bowlers}}\cr
 #' @export
 #'
-rankT20Bowlers <- function(teamNames,odir=".",minMatches, dateRange, wicketsVsER) {
+rankT20Bowlers <- function(dir=".",minMatches, dateRange, wicketsVsER,type) {
     bowlingDetails=bowler=wickets=economyRate=matches=meanWickets=meanER=totalWickets=year=NULL
     wicketPlayerOut=opposition=venue=NULL
-    teams = unlist(teamNames)
     currDir= getwd()
 
     #Change dir
-    setwd(odir)
+    setwd(dir)
     bowlingDF<-NULL
 
-    # Compute wickets by bowler in each team
-    o <- data.frame(bowler=character(0),wickets=numeric(0),economyRate=numeric(0))
-    for(team1 in teams){
-        bowlingDetails <- NULL
-        val <- paste(team1,"-BowlingDetails.RData",sep="")
-        print(val)
-        tryCatch(load(val),
-                 error = function(e) {
-                     print("No data1")
-                     setNext=TRUE
-                 }
-
-
-        )
-        details <- bowlingDetails
-        bowlingDF <- rbind(bowlingDF,details)
-    }
+    print("*******")
+    print(type)
+    bowlingDetails <- paste(type,"-BowlingDetails.RData",sep="")
+    print(bowlingDetails)
+    load(bowlingDetails)
+    print(dim(bowlingDF))
 
     # Note: If the date Range is NULL setback to root directory
     tryCatch({
@@ -115,6 +101,7 @@ rankT20Bowlers <- function(teamNames,odir=".",minMatches, dateRange, wicketsVsER
     g=merge(b,f,by="bowler",all.x = TRUE)
     g[is.na(g)] <- 0
     h <- filter(g,matches >= minMatches)
+    # Reset to currDir
     setwd(currDir)
     if(wicketsVsER == "Wickets over Economy rate"){
           T20BowlersRank <- arrange(h,desc(totalWickets),desc(meanER))
