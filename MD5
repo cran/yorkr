@@ -1,6 +1,6 @@
-5b6dfc3dd89fa08f175680903cc83afb *DESCRIPTION
+d958f826457c391c6a691945e4faddd9 *DESCRIPTION
 6914dc28ebaad40ba87775fd412ed594 *LICENSE
-f394e3ab06b5c61af946de9e2853bfa1 *NAMESPACE
+9f8fe0478bcd55b516cce657173da7b7 *NAMESPACE
 0fc3ee8b4c97e54471212da48a71a0f2 *R/batsmanCumulativeAverageRuns.R
 3d2887322f8b6901f2114f5204714f10 *R/batsmanCumulativeStrikeRate.R
 42794993659d66d3b76c8fd30aeaae27 *R/batsmanDismissals.R
@@ -9,6 +9,7 @@ c4ae7fd64a9aa57667f9eacf9932cc17 *R/batsmanFoursSixes.R
 ce45ac9e15c1319d640e1b7390fd635c *R/batsmanRunsAgainstOpposition.R
 dffd74fa65d784a0ccb2c0e89a1ab580 *R/batsmanRunsVenue.R
 97316e8afdc922721949af3ea0458e25 *R/batsmanRunsVsStrikeRate.R
+9f2862e877a5b4ffc6cf3d795b8ebf73 *R/batsmanVsBowlerPerf.R
 dfa57c3c2fbd11468122ac2df48e011e *R/batsmansRunsPredict.R
 8d268b14246c6a4cc3a710faef53a79e *R/batsmansRunsVsDeliveries.R
 607e15b822e413938e087699c878a539 *R/bowlerCumulativeAvgEconRate.R
@@ -17,6 +18,7 @@ fe11546586330863ff2a2dce629034db *R/bowlerCumulativeAvgWickets.R
 50a386c0659e5609da2be9ddf84687d6 *R/bowlerMeanEconomyRate.R
 0869d9115b855d9161e80f1446524480 *R/bowlerMeanRunsConceded.R
 e08b1422ad8b009bae45737ac08f6568 *R/bowlerMovingAverage.R
+3d16ff6fce7218d9b8f8e42af2b71030 *R/bowlerVsBatsmanPerf.R
 f989da5a100c293e5abd0a67df228c27 *R/bowlerWicketsAcrossOvers.R
 ac6595a1dc45e09f0038bbb018ea61c4 *R/bowlerWicketsAgainstOppn.R
 011a32d94beadb52ef2208991e3cd3ad *R/bowlerWicketsVenue.R
@@ -178,12 +180,14 @@ cd62e433caf6e557f7977a968d3b3fb3 *man/batsmanRunsPredict.Rd
 e1a57f234d0f3ffba52b179babcb1471 *man/batsmanRunsVenue.Rd
 58cf7a14202cd17dcb32229f713983d3 *man/batsmanRunsVsDeliveries.Rd
 af022faa3b1cab8555718e69cde7399a *man/batsmanRunsVsStrikeRate.Rd
+40870529e56c3f7a57ebd061e6029c71 *man/batsmanVsBowlerPerf.Rd
 317415567d3ff9a40a59b832b8e34076 *man/bowlerCumulativeAvgEconRate.Rd
 85f7a5f812681ecfcc0829f94f387047 *man/bowlerCumulativeAvgWickets.Rd
 1b4bf554df2925d950a6c0db36299599 *man/bowlerDeliveryWickets.Rd
 9369e34aea7454dabc489756e8871f58 *man/bowlerMeanEconomyRate.Rd
 d8a01985256f9e1cac75e65c95d5fc13 *man/bowlerMeanRunsConceded.Rd
 e71b9d4700e882c2b29a32dd95ef0485 *man/bowlerMovingAverage.Rd
+dff0fa2cd1431e5b34fda2b0e2bef6f6 *man/bowlerVsBatsmanPerf.Rd
 f7f6c64ae89619d2b9c0af754897eb2b *man/bowlerWicketsAgainstOpposition.Rd
 865dea080e2c66688b693408083d48c9 *man/bowlerWicketsVenue.Rd
 61f6e5c54338c87984c7805b7be0dbf8 *man/bowlerWktsPredict.Rd
