@@ -1,4 +1,4 @@
-d958f826457c391c6a691945e4faddd9 *DESCRIPTION
+452b42dc38fc1c5fd845de948522117e *DESCRIPTION
 6914dc28ebaad40ba87775fd412ed594 *LICENSE
 9f8fe0478bcd55b516cce657173da7b7 *NAMESPACE
 0fc3ee8b4c97e54471212da48a71a0f2 *R/batsmanCumulativeAverageRuns.R
@@ -36,8 +36,8 @@ ffffc7096cec8becfab7bb918fee0adc *R/convertAllYaml2RDataframes.R
 c0bfc1ebca2fc8dadd05d2f76103a3da *R/getCPLBattingDetails.R
 f9765f1b72a1943cbc14f7efe3274bb6 *R/getCPLBowlingDetails.R
 a7f6d3337b572f0f96c47ccf12e5656e *R/getDeliveryWickets.R
-14423853c4c3eddf0496fbdfc7c41ae1 *R/getIPLBattingDetails.R
-1d5fa2a3c56a476a59589ee88b15ae5a *R/getIPLBowlingDetails.R
+97f85ed08ef42789487a9eab1e684d66 *R/getIPLBattingDetails.R
+c83341fd55a830d4e7250544e788fbf5 *R/getIPLBowlingDetails.R
 a6efa02022fc8eb4c2875a9fc4f62631 *R/getMatchDetails.R
 1a41a81e95fd36796ca0e77b1e94f519 *R/getNTBBattingDetails.R
 6dfeb95d65febd16a90d664ab400796e *R/getNTBBowlingDetails.R
@@ -77,14 +77,14 @@ ecdb958666c46d577f594fab4dce0620 *R/rankT20Bowlers.R
 4f92518f9bb074c4319fa9870d0b84a3 *R/saveAllMatchesAllOpposition.R
 7ba2653a083333c1fd86ae0f916ca0ae *R/saveAllMatchesAllOppositionBBLT20.R
 ac71da7ca2f1e08524d81b2a1d5b9080 *R/saveAllMatchesAllOppositionCPLT20.R
-1df4f66c0d0525d96a51e3b381050776 *R/saveAllMatchesAllOppositionIPLT20.R
+ff14c89030d7e89dae2057726b61f9da *R/saveAllMatchesAllOppositionIPLT20.R
 674a89ad57cf22dc25130f3631deb8da *R/saveAllMatchesAllOppositionNTBT20.R
 5e1e332434aee352eb2b904fea65bb74 *R/saveAllMatchesAllOppositionPSLT20.R
 c797b015d14b9ccc9b0a33a4adf6e8a5 *R/saveAllMatchesAllOppositionSSMT20.R
 a4577221cb36c852dada5e92cfba29b2 *R/saveAllMatchesAllOppositionWBBT20.R
 981c19c275cb34b2da263a709100c2d1 *R/saveAllMatchesBetween2BBLTeams.R
 54a8af3cf9411ab9c250c95a64b02701 *R/saveAllMatchesBetween2CPLTeams.R
-19932a42e1373bb1b9a1df371ce25cd0 *R/saveAllMatchesBetween2IPLTeams.R
+1f3e5154d737b0b98a3fe376055ddda1 *R/saveAllMatchesBetween2IPLTeams.R
 bc5b35cccf1837df44b441c9721cfe0e *R/saveAllMatchesBetween2NTBTeams.R
 dc9e62c8b3c8cbdadbc1d06de4b25aa5 *R/saveAllMatchesBetween2PSLTeams.R
 1a1bc8ad0c8b7d3372fa214816a021cd *R/saveAllMatchesBetween2SSMTeams.R
