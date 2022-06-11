@@ -8,7 +8,6 @@
 #' @title
 #' Gets min,max date and min and max matches from dataframe
 #'
-#'
 #' @description
 #' This function gets min,max date and min and max matches from dataframe
 #'

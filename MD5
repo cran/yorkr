@@ -1,6 +1,6 @@
-dfafd60e769ac45223aee6be62c18e97 *DESCRIPTION
+e8b8d420ccf4262ee75d1a930ee29bf8 *DESCRIPTION
 6914dc28ebaad40ba87775fd412ed594 *LICENSE
-9f8fe0478bcd55b516cce657173da7b7 *NAMESPACE
+37f7e04e40879d23936276835840829b *NAMESPACE
 0fc3ee8b4c97e54471212da48a71a0f2 *R/batsmanCumulativeAverageRuns.R
 3d2887322f8b6901f2114f5204714f10 *R/batsmanCumulativeStrikeRate.R
 42794993659d66d3b76c8fd30aeaae27 *R/batsmanDismissals.R
@@ -55,7 +55,7 @@ a2122275bfa67d4319bdb3fd6f858776 *R/getSSMBattingDetails.R
 4ec10224449d9609d404c00e82154f18 *R/getWBBBowlingDetails.R
 460585554321d05165c25903d08a318d *R/helper.R
 0565fd1b3d1e1d1d333ab86f890b4423 *R/helper1.R
-73a3570a049b220a8131fb04fd557d07 *R/helper2.R
+53390515eb0011ad02d4a3cd3448c6c7 *R/helper2.R
 389c14cbdc41ebc6d3831449ec69de9e *R/helper3.R
 91d1017ae41743b807215c0ee4b70458 *R/matchWormChart.R
 8c1916264523d016663bcc9a23e485dc *R/matchWormWicket.R
@@ -68,6 +68,8 @@ bcf5c7106636a562e88ba471fa312970 *R/overallWicketsERMiddleOversPlotT20.R
 964483cbcfa730484bec4dacac9c9d69 *R/overallWicketsERPlotT20.R
 8fc72f636d27a64ffd0d26f4f7c94be8 *R/overallWicketsERPowerPlayPlotT20.R
 edb3e0231de5c916c78b32d643b4bfd5 *R/parseYamlOver.R
+dd53d6bfe5bc034d0aa21b798c647b92 *R/plotBatsmenSeasonPerf.R
+6b628b98da60e570d04f52c4cd7e60eb *R/plotBowlersSeasonPerf.R
 e08badd02aa1633b32feedb18850fe9b *R/plotWinLossBetweenTeams.R
 df560ea6c4b6e55678d017dba55bdfcf *R/plotWinLossTeamVsAllTeams.R
 41847ad36e33afa918ddcadf7f4c146a *R/rankODIBatsmen.R
@@ -236,6 +238,8 @@ a86d3d599e2335d2219cab139088064b *man/overallRunsSRPlotT20.Rd
 19f506b22be44b08e3474b8063ccb96c *man/overallWicketsERPlotT20.Rd
 1841be572bd19a78f73297c17beb31bd *man/overallWicketsERPowerPlayPlotT20.Rd
 8ff80431e4aeeeb12ac9d28a965b73ec *man/parseYamlOver.Rd
+9448351fabb1cc680c95e2b3c3bc1887 *man/plotBatsmenSeasonPerf.Rd
+c3e3607229ba3a6e5fc85b1c64d4254b *man/plotBowlersSeasonPerf.Rd
 5ef095d2df0227ab3d5ca22601a42b46 *man/plotWinLossBetweenTeams.Rd
 c6b80c0ed99b4c233ca6ab965e3261e2 *man/plotWinLossTeamVsAllTeams.Rd
 744a3e90671ca8450b226082c37a5a97 *man/rankODIBatsmen.Rd
