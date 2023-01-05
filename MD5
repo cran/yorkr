@@ -1,6 +1,6 @@
-e8b8d420ccf4262ee75d1a930ee29bf8 *DESCRIPTION
+a882627c896833f7972c65ea89cd8506 *DESCRIPTION
 6914dc28ebaad40ba87775fd412ed594 *LICENSE
-37f7e04e40879d23936276835840829b *NAMESPACE
+7c454a3b83e0525f860c4bce31d7f69f *NAMESPACE
 0fc3ee8b4c97e54471212da48a71a0f2 *R/batsmanCumulativeAverageRuns.R
 3d2887322f8b6901f2114f5204714f10 *R/batsmanCumulativeStrikeRate.R
 42794993659d66d3b76c8fd30aeaae27 *R/batsmanDismissals.R
@@ -55,7 +55,7 @@ a2122275bfa67d4319bdb3fd6f858776 *R/getSSMBattingDetails.R
 4ec10224449d9609d404c00e82154f18 *R/getWBBBowlingDetails.R
 460585554321d05165c25903d08a318d *R/helper.R
 0565fd1b3d1e1d1d333ab86f890b4423 *R/helper1.R
-53390515eb0011ad02d4a3cd3448c6c7 *R/helper2.R
+73a3570a049b220a8131fb04fd557d07 *R/helper2.R
 389c14cbdc41ebc6d3831449ec69de9e *R/helper3.R
 91d1017ae41743b807215c0ee4b70458 *R/matchWormChart.R
 8c1916264523d016663bcc9a23e485dc *R/matchWormWicket.R
@@ -68,8 +68,6 @@ bcf5c7106636a562e88ba471fa312970 *R/overallWicketsERMiddleOversPlotT20.R
 964483cbcfa730484bec4dacac9c9d69 *R/overallWicketsERPlotT20.R
 8fc72f636d27a64ffd0d26f4f7c94be8 *R/overallWicketsERPowerPlayPlotT20.R
 edb3e0231de5c916c78b32d643b4bfd5 *R/parseYamlOver.R
-dd53d6bfe5bc034d0aa21b798c647b92 *R/plotBatsmenSeasonPerf.R
-6b628b98da60e570d04f52c4cd7e60eb *R/plotBowlersSeasonPerf.R
 e08badd02aa1633b32feedb18850fe9b *R/plotWinLossBetweenTeams.R
 df560ea6c4b6e55678d017dba55bdfcf *R/plotWinLossTeamVsAllTeams.R
 41847ad36e33afa918ddcadf7f4c146a *R/rankODIBatsmen.R
@@ -171,6 +169,8 @@ bc17d91f781fdf4e38e3fcf0140e59ac *R/topERBowlerAcrossOversOppnAllMatches.R
 c85c9828176907ee3655cf653b37290f *R/topSRBatsmenAcrossOversOppnAllMatches.R
 1aef5e14b6cbd7cf7ba8a04b9943d8b5 *R/topWicketsBowlerAcrossOversAllOppnAllMatches.R
 e804f59c7e822bf79588b1c170b01683 *R/topWicketsBowlerAcrossOversOppnAllMatches.R
+9b4a1ffba99fecc2954b0b78a2e4ac9c *R/winProbLR.R
+0f1d0152788ec6f9872bae6eb0b8f77e *R/winProbRF.R
 802a5724590464c838c7e874a4c6a821 *README.md
 f2c1583995cb84a4c4f8a8b88a26803c *man/batsmanCumulativeAverageRuns.Rd
 1e15e52462518806436bf0721e1eca3a *man/batsmanCumulativeStrikeRate.Rd
@@ -238,8 +238,6 @@ a86d3d599e2335d2219cab139088064b *man/overallRunsSRPlotT20.Rd
 19f506b22be44b08e3474b8063ccb96c *man/overallWicketsERPlotT20.Rd
 1841be572bd19a78f73297c17beb31bd *man/overallWicketsERPowerPlayPlotT20.Rd
 8ff80431e4aeeeb12ac9d28a965b73ec *man/parseYamlOver.Rd
-9448351fabb1cc680c95e2b3c3bc1887 *man/plotBatsmenSeasonPerf.Rd
-c3e3607229ba3a6e5fc85b1c64d4254b *man/plotBowlersSeasonPerf.Rd
 5ef095d2df0227ab3d5ca22601a42b46 *man/plotWinLossBetweenTeams.Rd
 c6b80c0ed99b4c233ca6ab965e3261e2 *man/plotWinLossTeamVsAllTeams.Rd
 744a3e90671ca8450b226082c37a5a97 *man/rankODIBatsmen.Rd
@@ -341,3 +339,5 @@ d161b4907a8c89e06c1d37cd06ae3a3d *man/topERBowlerAcrossOversOppnAllMatches.Rd
 2e97461d97794d307d5788e4cf753169 *man/topSRBatsmenAcrossOversOppnAllMatches.Rd
 0f621bfda84523937b1dfaf191afb4a7 *man/topWicketsBowlerAcrossOversAllOppnAllMatches.Rd
 e96c2f03cdc35eb1e1577581eec9faa2 *man/topWicketsBowlerAcrossOversOppnAllMatches.Rd
+4352a287fd8510bb0342c4185ef4ed43 *man/winProbabilityLR.Rd
+368592784075c7ed6512e871f98f7f40 *man/winProbabilityRF.Rd
