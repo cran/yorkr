@@ -1,4 +1,4 @@
-a882627c896833f7972c65ea89cd8506 *DESCRIPTION
+ddc6df4725b7ebbbb76bc1a80ec1b6d6 *DESCRIPTION
 6914dc28ebaad40ba87775fd412ed594 *LICENSE
 7c454a3b83e0525f860c4bce31d7f69f *NAMESPACE
 0fc3ee8b4c97e54471212da48a71a0f2 *R/batsmanCumulativeAverageRuns.R
@@ -53,9 +53,10 @@ a2122275bfa67d4319bdb3fd6f858776 *R/getSSMBattingDetails.R
 51452cf42ee00b289204962d2dea0f4e *R/getTeamBowlingDetails.R
 6c09d6ff6584ccb8e77d5ae5d129ab95 *R/getWBBBattingDerails.R
 4ec10224449d9609d404c00e82154f18 *R/getWBBBowlingDetails.R
+9ca9822f3ad6a735d184211637c6df77 *R/globals.R
 460585554321d05165c25903d08a318d *R/helper.R
 0565fd1b3d1e1d1d333ab86f890b4423 *R/helper1.R
-73a3570a049b220a8131fb04fd557d07 *R/helper2.R
+fdd2314f2d855b132161a388d189ac99 *R/helper2.R
 389c14cbdc41ebc6d3831449ec69de9e *R/helper3.R
 91d1017ae41743b807215c0ee4b70458 *R/matchWormChart.R
 8c1916264523d016663bcc9a23e485dc *R/matchWormWicket.R
@@ -169,8 +170,8 @@ bc17d91f781fdf4e38e3fcf0140e59ac *R/topERBowlerAcrossOversOppnAllMatches.R
 c85c9828176907ee3655cf653b37290f *R/topSRBatsmenAcrossOversOppnAllMatches.R
 1aef5e14b6cbd7cf7ba8a04b9943d8b5 *R/topWicketsBowlerAcrossOversAllOppnAllMatches.R
 e804f59c7e822bf79588b1c170b01683 *R/topWicketsBowlerAcrossOversOppnAllMatches.R
-9b4a1ffba99fecc2954b0b78a2e4ac9c *R/winProbLR.R
-0f1d0152788ec6f9872bae6eb0b8f77e *R/winProbRF.R
+cdd6bcea438071538d59a6ffcdca07ab *R/winProbLR.R
+3cafde48c1c72126bb11f3d8af67a30b *R/winProbRF.R
 802a5724590464c838c7e874a4c6a821 *README.md
 f2c1583995cb84a4c4f8a8b88a26803c *man/batsmanCumulativeAverageRuns.Rd
 1e15e52462518806436bf0721e1eca3a *man/batsmanCumulativeStrikeRate.Rd
@@ -223,6 +224,7 @@ b6582fc6cfbd6ea56d31a5322aa8a43b *man/getTeamBattingDetails.Rd
 20fa16a45b998eeccb48fc270a7fcff7 *man/getTeamBowlingDetails.Rd
 c5428e78be896f1039c17558a5614873 *man/getWBBBattingDetails.Rd
 0935b1e7d1e5c99ac78c407f175870d5 *man/getWBBBowlingDetails.Rd
+a59a931bf197eb9d5217df611c2b26f6 *man/globals.Rd
 a47f3acf1d0820fa65cf98dd7c4be656 *man/helper.Rd
 a5fd95a62250e54362fc634b9ee35d61 *man/helper1.Rd
 0c9cff189aa23abe68d2d0f7f536f092 *man/helper2.Rd
