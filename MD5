@@ -1,6 +1,6 @@
-ddc6df4725b7ebbbb76bc1a80ec1b6d6 *DESCRIPTION
+8307102f54a2ce97b8f5ed7d9577ede0 *DESCRIPTION
 6914dc28ebaad40ba87775fd412ed594 *LICENSE
-7c454a3b83e0525f860c4bce31d7f69f *NAMESPACE
+7b20f0c5e0656e0583ed9c4d48e4b1dd *NAMESPACE
 0fc3ee8b4c97e54471212da48a71a0f2 *R/batsmanCumulativeAverageRuns.R
 3d2887322f8b6901f2114f5204714f10 *R/batsmanCumulativeStrikeRate.R
 42794993659d66d3b76c8fd30aeaae27 *R/batsmanDismissals.R
@@ -53,7 +53,7 @@ a2122275bfa67d4319bdb3fd6f858776 *R/getSSMBattingDetails.R
 51452cf42ee00b289204962d2dea0f4e *R/getTeamBowlingDetails.R
 6c09d6ff6584ccb8e77d5ae5d129ab95 *R/getWBBBattingDerails.R
 4ec10224449d9609d404c00e82154f18 *R/getWBBBowlingDetails.R
-9ca9822f3ad6a735d184211637c6df77 *R/globals.R
+9573e918ee851e22e5c9c6b6960e2135 *R/globals.R
 460585554321d05165c25903d08a318d *R/helper.R
 0565fd1b3d1e1d1d333ab86f890b4423 *R/helper1.R
 fdd2314f2d855b132161a388d189ac99 *R/helper2.R
@@ -170,7 +170,8 @@ bc17d91f781fdf4e38e3fcf0140e59ac *R/topERBowlerAcrossOversOppnAllMatches.R
 c85c9828176907ee3655cf653b37290f *R/topSRBatsmenAcrossOversOppnAllMatches.R
 1aef5e14b6cbd7cf7ba8a04b9943d8b5 *R/topWicketsBowlerAcrossOversAllOppnAllMatches.R
 e804f59c7e822bf79588b1c170b01683 *R/topWicketsBowlerAcrossOversOppnAllMatches.R
-cdd6bcea438071538d59a6ffcdca07ab *R/winProbLR.R
+0193d62e72ac40a0720261163379298e *R/winProbDL.R
+c22646d87cefe1aff74bf709073c96a3 *R/winProbLR.R
 3cafde48c1c72126bb11f3d8af67a30b *R/winProbRF.R
 802a5724590464c838c7e874a4c6a821 *README.md
 f2c1583995cb84a4c4f8a8b88a26803c *man/batsmanCumulativeAverageRuns.Rd
@@ -341,5 +342,6 @@ d161b4907a8c89e06c1d37cd06ae3a3d *man/topERBowlerAcrossOversOppnAllMatches.Rd
 2e97461d97794d307d5788e4cf753169 *man/topSRBatsmenAcrossOversOppnAllMatches.Rd
 0f621bfda84523937b1dfaf191afb4a7 *man/topWicketsBowlerAcrossOversAllOppnAllMatches.Rd
 e96c2f03cdc35eb1e1577581eec9faa2 *man/topWicketsBowlerAcrossOversOppnAllMatches.Rd
+726334b5b622b698947fa8df1324774c *man/winProbabilityDL.Rd
 4352a287fd8510bb0342c4185ef4ed43 *man/winProbabilityLR.Rd
 368592784075c7ed6512e871f98f7f40 *man/winProbabilityRF.Rd
