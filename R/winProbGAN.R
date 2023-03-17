@@ -1,18 +1,18 @@
 ##########################################################################################
 # Designed and developed by Tinniam V Ganesh
-# Date : 25 Dec 2022
-# Function: winProbabilityDL
-# This function computes  the ball by ball win probability using Deep Learning Keras
+# Date : 28 Feb 2023
+# Function: winProbabilityGAN
+# This function computes  the ball by ball win probability using GAN and synthetic data
 #
 ###########################################################################################
 #' @title
-#' Plot the  win probability using Deep Learning model
+#' Plot the  win probability using GAN model
 #'
 #' @description
 #' This function  plots the  win probability of the teams in a T20 match
 #'
 #' @usage
-#' winProbabilityDL(match,t1,t2,plot=1)
+#' winProbabilityGAN(match,t1,t2,plot=1)
 #'
 #' @param match
 #' The dataframe of the match
@@ -44,7 +44,7 @@
 #' a <- getMatchDetails("England","Pakistan","2006-09-05",dir="../temp")
 #'
 #' # Plot tne match worm plot
-#' winProbabilityDL(a,'England',"Pakistan")
+#' winProbabilityGAN(a,'England',"Pakistan")
 #' }
 #' @seealso
 #' \code{\link{getBatsmanDetails}}\cr
@@ -54,7 +54,7 @@
 #'
 #' @export
 #'
-winProbabilityDL <- function(match,t1,t2,plot=1){
+winProbabilityGAN <- function(match,t1,t2,plot=1){
 
   team=ball=totalRuns=wicketPlayerOut=ballsRemaining=runs=numWickets=runsMomentum=perfIndex=isWinner=NULL
   predict=ml_model=winProbability=ggplotly=runs=runRate=batsman=bowler=NULL
@@ -183,7 +183,7 @@ winProbabilityDL <- function(match,t1,t2,plot=1){
   print(dim(dfb))
 
   # load the model
-  m=predict(dl_model,dfa,type = "prob")
+  m=predict(gan_model,dfa,type = "prob")
 
 
   m1=m*100
@@ -207,42 +207,6 @@ winProbabilityDL <- function(match,t1,t2,plot=1){
   names(team22) = c("ballNum","winProbability")
 
 
-  # Add labels to chart team 1
-  #Mark when players were dismissed
-  k <- cbind(b,m1)
-  k$ballNum = seq.int(nrow(k))
-  k1= filter(k,wicketPlayerOut !=  "nobody")
-  k2 = select(k1,ballNum,m1,wicketPlayerOut)
-  #print(k2)
-
-  # Mark when batsman started
-  batsmen = unique(k$batsman)
-  p =  data.frame(matrix(nrow = 0, ncol = dim(k[2])))
-  for(bman in batsmen){
-      l <-k  %>% filter(batsman == bman)
-      n=l[1,]
-      p=rbind(p,n)
-  }
-  p1 = select(p,ballNum,m1,batsman)
-  #print(p1)
-
-  # Add labels to team 2
-  #Mark when players were dismissed
-  r <- cbind(b1,n1)
-  r$ballNum = seq.int(nrow(r))
-  r1= filter(r,wicketPlayerOut !=  "nobody")
-  r2 = select(r1,ballNum,n1,wicketPlayerOut)
-
-  # Mark when batsman started
-  batsmen = unique(r$batsman)
-  s =  data.frame(matrix(nrow = 0, ncol = dim(k[2])))
-  for(bman1 in batsmen){
-      t1 <-r  %>% filter(batsman == bman1)
-      t2=t1[1,]
-      s=rbind(s,t2)
-  }
-  s1 = select(s,ballNum,n1,batsman)
-
   # Plot both lines
   if(plot ==1){ #ggplot
     df3 = as.data.frame(cbind(d$ballNum,m1))
@@ -254,14 +218,6 @@ winProbabilityDL <- function(match,t1,t2,plot=1){
     g <- ggplot() +
     geom_line(data = df3, aes(x = ballNum, y = winProbability, color = teamA)) +
     geom_line(data = df4, aes(x = ballNum, y = winProbability, color = teamB))+
-    geom_point(data=k2, aes(x=ballNum, y=m1,color="blue"),shape=15) +
-    geom_text(data=k2, aes(x=ballNum,y=m1,label=wicketPlayerOut,color="blue"),nudge_x =0.5,nudge_y = 0.5)+
-    geom_point(data=p1, aes(x=ballNum, y=m1,colour="red"),shape=16) +
-    geom_text(data=p1, aes(x=ballNum,y=m1,label=batsman,colour="red"),nudge_x =0.5,nudge_y = 0.5) +
-    geom_point(data=r2, aes(x=ballNum, y=n1,colour="black"),shape=15) +
-    geom_text(data=r2, aes(x=ballNum,y=n1,label=wicketPlayerOut,colour="black"),nudge_x =0.5,nudge_y = 0.5) +
-    geom_point(data=s1, aes(x=ballNum, y=n1,colour="grey"),shape=16) +
-    geom_text(data=s1, aes(x=ballNum,y=n1,label=batsman,colour="grey"),nudge_x =0.5,nudge_y = 0.5)+
     geom_vline(xintercept=36, linetype="dashed", color = "red") +
     geom_vline(xintercept=96, linetype="dashed", color = "red") +
     ggtitle("Ball-by-ball Deep Learning Win Probability (Overlapping)")
