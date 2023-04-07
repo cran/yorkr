@@ -1,4 +1,4 @@
-7079aa7b78c3eed4a85e19df5f1987aa *DESCRIPTION
+612cd1dc96be34189be39b5413b56aa9 *DESCRIPTION
 6914dc28ebaad40ba87775fd412ed594 *LICENSE
 e83be2d1eb6f0ce306e5f77a626e69b1 *NAMESPACE
 0fc3ee8b4c97e54471212da48a71a0f2 *R/batsmanCumulativeAverageRuns.R
@@ -28,9 +28,9 @@ e93e5f05758f7f33fb21f90ae17e3ed4 *R/bowlerWinProbDL.R
 f365fa625e7b07b8c144e1e2772ccd90 *R/bowlerWinProbLR.R
 26aeb9852d697c307cc128a659557595 *R/bowlerWktsPredict.R
 ffffc7096cec8becfab7bb918fee0adc *R/convertAllYaml2RDataframes.R
-fe9d8c0220530515b0b2b1e7b7499dce *R/convertAllYaml2RDataframesT20.R
+7621739e623b6ebc6735301767adfd23 *R/convertAllYaml2RDataframesT20.R
 799afd2947b2bc9d7b4674b927625201 *R/convertYaml2RDataframe.R
-9331a23e7986d675bd9937e4c237931e *R/convertYaml2RDataframeT20.R
+1d156733d2490061d7735e915aef2cca *R/convertYaml2RDataframeT20.R
 8c22afaa635d616d188971c777804e24 *R/getAllMatchesAllOpposition.R
 968dcf66ce19639db795a1be5f147f23 *R/getAllMatchesBetweenTeams.R
 938f9e46763f417b96913a1c9d721058 *R/getBBLBattingDetails.R
@@ -72,7 +72,7 @@ b8ba610c3d3f4a4fedd083aa04ebc77d *R/overallRunsSRMiddleOversPlotT20.R
 bcf5c7106636a562e88ba471fa312970 *R/overallWicketsERMiddleOversPlotT20.R
 964483cbcfa730484bec4dacac9c9d69 *R/overallWicketsERPlotT20.R
 8fc72f636d27a64ffd0d26f4f7c94be8 *R/overallWicketsERPowerPlayPlotT20.R
-edb3e0231de5c916c78b32d643b4bfd5 *R/parseYamlOver.R
+db937d408e23ab24983e55fd83242dc5 *R/parseYamlOver.R
 e08badd02aa1633b32feedb18850fe9b *R/plotWinLossBetweenTeams.R
 df560ea6c4b6e55678d017dba55bdfcf *R/plotWinLossTeamVsAllTeams.R
 41847ad36e33afa918ddcadf7f4c146a *R/rankODIBatsmen.R
