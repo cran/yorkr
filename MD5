@@ -1,4 +1,4 @@
-612cd1dc96be34189be39b5413b56aa9 *DESCRIPTION
+3743eec258ad4f193675ceca37a86732 *DESCRIPTION
 6914dc28ebaad40ba87775fd412ed594 *LICENSE
 e83be2d1eb6f0ce306e5f77a626e69b1 *NAMESPACE
 0fc3ee8b4c97e54471212da48a71a0f2 *R/batsmanCumulativeAverageRuns.R
@@ -10,8 +10,8 @@ ce45ac9e15c1319d640e1b7390fd635c *R/batsmanRunsAgainstOpposition.R
 dffd74fa65d784a0ccb2c0e89a1ab580 *R/batsmanRunsVenue.R
 97316e8afdc922721949af3ea0458e25 *R/batsmanRunsVsStrikeRate.R
 0756dbbb4fc4cc80627663f912a014db *R/batsmanVsBowlerPerf.R
-67f90eff30446bcba76d699f8270b65c *R/batsmanWinProbDL.R
-9e09ce23c6a021c42bd1c6a9e7d829be *R/batsmanWinProbLR.R
+d2f537c40d7f77cbe4b64d014c8fc06e *R/batsmanWinProbDL.R
+b8bc1a71436b3c708fe559b74af44adf *R/batsmanWinProbLR.R
 dfa57c3c2fbd11468122ac2df48e011e *R/batsmansRunsPredict.R
 8d268b14246c6a4cc3a710faef53a79e *R/batsmansRunsVsDeliveries.R
 607e15b822e413938e087699c878a539 *R/bowlerCumulativeAvgEconRate.R
@@ -24,8 +24,8 @@ e08b1422ad8b009bae45737ac08f6568 *R/bowlerMovingAverage.R
 f989da5a100c293e5abd0a67df228c27 *R/bowlerWicketsAcrossOvers.R
 ac6595a1dc45e09f0038bbb018ea61c4 *R/bowlerWicketsAgainstOppn.R
 011a32d94beadb52ef2208991e3cd3ad *R/bowlerWicketsVenue.R
-e93e5f05758f7f33fb21f90ae17e3ed4 *R/bowlerWinProbDL.R
-f365fa625e7b07b8c144e1e2772ccd90 *R/bowlerWinProbLR.R
+94645eb538455fcdbdd29146f490872d *R/bowlerWinProbDL.R
+2249d8f3e7faf930145a4136b9c21aa0 *R/bowlerWinProbLR.R
 26aeb9852d697c307cc128a659557595 *R/bowlerWktsPredict.R
 ffffc7096cec8becfab7bb918fee0adc *R/convertAllYaml2RDataframes.R
 7621739e623b6ebc6735301767adfd23 *R/convertAllYaml2RDataframesT20.R
@@ -174,9 +174,9 @@ bc17d91f781fdf4e38e3fcf0140e59ac *R/topERBowlerAcrossOversOppnAllMatches.R
 c85c9828176907ee3655cf653b37290f *R/topSRBatsmenAcrossOversOppnAllMatches.R
 1aef5e14b6cbd7cf7ba8a04b9943d8b5 *R/topWicketsBowlerAcrossOversAllOppnAllMatches.R
 e804f59c7e822bf79588b1c170b01683 *R/topWicketsBowlerAcrossOversOppnAllMatches.R
-669479c991334ef3a3c1a51317312756 *R/winProbDL.R
+dde7eda6daf812f26cf519366104a749 *R/winProbDL.R
 1d0a5a9e85c30b09d8cca8d5c324eb40 *R/winProbGAN.R
-16f09c7772fcdbfe2eacc47faf2b3b7b *R/winProbLR.R
+cb14df05f1a4299b4906a81f13ea1f21 *R/winProbLR.R
 3cafde48c1c72126bb11f3d8af67a30b *R/winProbRF.R
 802a5724590464c838c7e874a4c6a821 *README.md
 1d3a1c469d5bafc0100fccdad0e87d84 *man/batsmanCumulativeAverageRuns.Rd
